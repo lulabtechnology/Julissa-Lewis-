@@ -3,15 +3,16 @@ import Image from "next/image";
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-brandNavy via-[#0B1630] to-brandBlue text-white">
-      <div className="absolute inset-0 opacity-20 mix-blend-screen pointer-events-none">
-        <div className="absolute -top-32 -right-40 h-80 w-80 rounded-full bg-brandTurquoise blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-brandLightBlue blur-3xl" />
+      {/* Luces de fondo con flotación suave */}
+      <div className="absolute inset-0 opacity-25 mix-blend-screen pointer-events-none">
+        <div className="absolute -top-32 -right-40 h-80 w-80 rounded-full bg-brandTurquoise blur-3xl animate-float-slow" />
+        <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-brandLightBlue blur-3xl animate-float-slow" />
       </div>
 
-      <div className="section-container relative py-16 lg:py-20 grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-center">
+      <div className="section-container relative py-16 lg:py-20 grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-center animate-fade-up">
         {/* Columna texto */}
         <div className="space-y-8">
-          <div className="badge-pill bg-white/5 border-white/20 text-xs text-brandLightBlue">
+          <div className="badge-pill bg-white/10 border-white/25 text-[11px]">
             Modernizando su contabilidad con herramientas líderes
           </div>
 
@@ -22,11 +23,11 @@ export function Hero() {
                 con enfoque estratégico y ético.
               </span>
             </h1>
-            <p className="text-sm sm:text-base text-white/80 max-w-xl">
-              Servicio del ciclo contable completo, planilla, gestión
-              tributaria y facturación electrónica, con más de 10 años de
-              experiencia trabajando con empresas multinacionales y el respaldo
-              del Colegio de Contadores Públicos Autorizados de Panamá (CCPAP).
+            <p className="text-sm sm:text-base text-white/85 max-w-xl">
+              Servicio del ciclo contable completo, planilla, gestión tributaria
+              y facturación electrónica, con más de 10 años de experiencia
+              trabajando con empresas multinacionales y el respaldo del Colegio
+              de Contadores Públicos Autorizados de Panamá (CCPAP).
             </p>
           </div>
 
@@ -44,7 +45,7 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-white/70 pt-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-white/80 pt-4">
             <div>
               <div className="text-base font-semibold text-white">
                 +10 años
@@ -52,7 +53,9 @@ export function Hero() {
               <div>de experiencia</div>
             </div>
             <div>
-              <div className="text-base font-semibold text-white">Full ciclo</div>
+              <div className="text-base font-semibold text-white">
+                Full ciclo
+              </div>
               <div>contable y planilla</div>
             </div>
             <div>
@@ -70,14 +73,14 @@ export function Hero() {
 
         {/* Columna tarjeta contacto + foto */}
         <div className="space-y-5">
-          <div className="card p-6 sm:p-7 text-brandNavy">
+          <div className="card p-6 sm:p-7 text-brandNavy animate-fade-up">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brandGray mb-3">
               Primer contacto
             </p>
             <h2 className="text-lg font-semibold mb-3">
               Agenda una sesión exploratoria
             </h2>
-            <p className="text-xs text-brandGray mb-4">
+            <p className="text-xs text-brandGray/90 mb-4">
               Cuéntame sobre tu empresa y definimos juntos el esquema contable,
               fiscal y de planilla que más te conviene.
             </p>
@@ -106,7 +109,7 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="relative h-52 sm:h-64 md:h-72 card overflow-hidden">
+          <div className="relative h-52 sm:h-64 md:h-72 card overflow-hidden animate-fade-up">
             <Image
               src="/images/julissa-hero-office.jpg"
               alt="Julissa Lewis en entorno profesional"
