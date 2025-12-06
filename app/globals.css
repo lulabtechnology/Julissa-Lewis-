@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-[#F7FAFC] text-brandNavy antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.section-container {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.card {
+  @apply bg-white/90 backdrop-blur shadow-soft rounded-3xl border border-white/60;
+}
+
+.badge-pill {
+  @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-brandLightBlue/10 text-brandBlue border border-brandLightBlue/30;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center px-5 py-3 text-sm font-semibold rounded-full bg-brandTurquoise text-white shadow-md hover:bg-brandBlue transition;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center px-5 py-3 text-sm font-semibold rounded-full border border-brandTurquoise text-brandTurquoise hover:bg-brandTurquoise hover:text-white transition;
+}
+
+.input-field {
+  @apply w-full rounded-2xl border border-gray-200 bg-white/80 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brandTurquoise/70 focus:border-brandTurquoise/70 transition;
+}
