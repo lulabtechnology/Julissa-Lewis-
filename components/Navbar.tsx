@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-30 bg-white/70 backdrop-blur border-b border-white/60">
+    <header className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-gray-100 animate-fade-in">
       <div className="section-container flex items-center justify-between py-3">
         <div className="flex items-center gap-3">
           {/* Logo */}
@@ -16,7 +16,7 @@ export function Navbar() {
             />
           </div>
           <div className="hidden sm:flex flex-col">
-            <span className="text-xs uppercase tracking-[0.18em] text-brandGray">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-brandGray">
               Contabilidad & Finanzas
             </span>
             <span className="text-sm font-semibold text-brandNavy">
@@ -26,13 +26,22 @@ export function Navbar() {
         </div>
 
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          <a href="#sobre-mi" className="text-brandGray hover:text-brandNavy">
+          <a
+            href="#sobre-mi"
+            className="text-brandNavy/80 hover:text-brandNavy transition-colors"
+          >
             Sobre mí
           </a>
-          <a href="#servicios" className="text-brandGray hover:text-brandNavy">
+          <a
+            href="#servicios"
+            className="text-brandNavy/80 hover:text-brandNavy transition-colors"
+          >
             Servicios
           </a>
-          <a href="#contacto" className="text-brandGray hover:text-brandNavy">
+          <a
+            href="#contacto"
+            className="text-brandNavy/80 hover:text-brandNavy transition-colors"
+          >
             Contacto
           </a>
         </nav>
