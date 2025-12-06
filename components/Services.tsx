@@ -1,6 +1,12 @@
 import Image from "next/image";
 
-const services = [
+type Lang = "es" | "en";
+
+interface ServicesProps {
+  lang: Lang;
+}
+
+const servicesEs = [
   {
     title: "Contabilidad general y en la nube",
     description:
@@ -23,35 +29,72 @@ const services = [
     tags: ["ITBMS", "Impuesto sobre la renta"]
   },
   {
-    title: "Planilla y RR.HH. en la nube",
+    title: "Planilla, RR.HH. y Anexo 03 en la nube",
     description:
-      "Procesamiento de planillas, prestaciones laborales y reportes a la CSS mediante plataformas digitales.",
+      "Procesamiento de planillas, prestaciones laborales, reportes a la CSS y elaboración del Anexo 03 mediante plataformas digitales.",
     image: "/images/service-consulting.jpg",
-    tags: ["Planilla", "CSS"]
+    tags: ["Planilla", "CSS", "Anexo 03"]
   }
 ];
 
-export function Services() {
+const servicesEn = [
+  {
+    title: "General and cloud-based accounting",
+    description:
+      "Basic accounting records, financial statements and remote management using platforms such as QuickBooks or Alegra.",
+    image: "/images/service-accounting.jpg",
+    tags: ["Financial statements", "Cloud accounting"]
+  },
+  {
+    title: "Electronic invoicing",
+    description:
+      "Implementation and management of the electronic invoicing system authorized by the DGI, including staff training.",
+    image: "/images/service-tax.jpg",
+    tags: ["DGI", "Compliance"]
+  },
+  {
+    title: "Tax management and compliance",
+    description:
+      "Calculation and filing of taxes (ITBMS, income tax), with ongoing tax advisory to avoid penalties.",
+    image: "/images/service-payroll.jpg",
+    tags: ["ITBMS", "Income tax"]
+  },
+  {
+    title: "Payroll, HR and Anexo 03 in the cloud",
+    description:
+      "Payroll processing, labor benefits, CSS reports and Anexo 03 filing through digital platforms.",
+    image: "/images/service-consulting.jpg",
+    tags: ["Payroll", "CSS", "Anexo 03"]
+  }
+];
+
+export function Services({ lang }: ServicesProps) {
+  const tServices = lang === "es" ? servicesEs : servicesEn;
+
   return (
     <section
       id="servicios"
-      className="bg-white/80 border-y border-gray-100 py-14 sm:py-16 lg:py-20"
+      className="bg-[#EDF2F7] border-y border-gray-100 py-14 sm:py-16 lg:py-20"
     >
       <div className="section-container space-y-10 animate-fade-up">
         <div className="max-w-2xl space-y-3">
-          <span className="badge-pill">Servicios principales</span>
+          <span className="badge-pill">
+            {lang === "es" ? "Servicios principales" : "Key services"}
+          </span>
           <h2 className="text-2xl sm:text-3xl font-semibold text-brandNavy">
-            Servicios contables y fiscales centrados en tu empresa.
+            {lang === "es"
+              ? "Servicios contables y fiscales centrados en tu empresa."
+              : "Accounting and tax services centered on your business."}
           </h2>
           <p className="text-sm sm:text-base text-brandGray">
-            Desde la organización contable básica hasta la gestión tributaria
-            completa, te acompaño en cada etapa para que puedas enfocarte en el
-            crecimiento de tu negocio.
+            {lang === "es"
+              ? "Desde la organización contable básica hasta la gestión tributaria completa, te acompaño en cada etapa para que puedas enfocarte en el crecimiento de tu negocio."
+              : "From basic accounting organization to complete tax management, I support you at every stage so you can focus on growing your business."}
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {services.map((service) => (
+          {tServices.map((service) => (
             <article
               key={service.title}
               className="card overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-transform duration-300"
