@@ -2,7 +2,13 @@
 
 import { FormEvent, useState } from "react";
 
-export function ContactSection() {
+type Lang = "es" | "en";
+
+interface ContactSectionProps {
+  lang: Lang;
+}
+
+export function ContactSection({ lang }: ContactSectionProps) {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
 
@@ -17,20 +23,21 @@ export function ContactSection() {
   }
 
   return (
-    <section
-      id="contacto"
-      className="section-container py-14 sm:py-16 lg:py-20 animate-fade-up"
-    >
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
+    <section id="contacto" className="bg-white py-14 sm:py-16 lg:py-20">
+      <div className="section-container animate-fade-up grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
         <div className="space-y-5">
-          <span className="badge-pill">Formulario de contacto</span>
+          <span className="badge-pill">
+            {lang === "es" ? "Formulario de contacto" : "Contact form"}
+          </span>
           <h2 className="text-2xl sm:text-3xl font-semibold text-brandNavy">
-            Cuéntame sobre tu empresa y tus necesidades contables.
+            {lang === "es"
+              ? "Cuéntame sobre tu empresa y tus necesidades contables."
+              : "Tell me about your company and your accounting needs."}
           </h2>
           <p className="text-sm sm:text-base text-brandGray max-w-xl">
-            Completa el formulario y recibirás una respuesta para coordinar una
-            llamada o una reunión virtual donde revisaremos tu caso y definiremos
-            el alcance adecuado.
+            {lang === "es"
+              ? "Completa el formulario y recibirás una respuesta para coordinar una llamada o una reunión virtual donde revisaremos tu caso y definiremos el alcance adecuado."
+              : "Fill out the form and you will receive a response to schedule a call or virtual meeting where we will review your case and define the right scope."}
           </p>
 
           <div className="text-sm text-brandGray space-y-1">
@@ -45,7 +52,9 @@ export function ContactSection() {
               </a>
             </p>
             <p>
-              <span className="font-semibold text-brandNavy">Correo:</span>{" "}
+              <span className="font-semibold text-brandNavy">
+                {lang === "es" ? "Correo:" : "Email:"}
+              </span>{" "}
               <a
                 href="mailto:JJLCPA.financialserv@gmail.com"
                 className="underline"
@@ -61,23 +70,27 @@ export function ContactSection() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="block text-xs font-medium text-brandGray mb-1">
-                  Nombre completo
+                  {lang === "es" ? "Nombre completo" : "Full name"}
                 </label>
                 <input
                   className="input-field"
                   name="nombre"
-                  placeholder="Tu nombre"
+                  placeholder={
+                    lang === "es" ? "Tu nombre" : "Your full name"
+                  }
                   required
                 />
               </div>
               <div>
                 <label className="block text-xs font-medium text-brandGray mb-1">
-                  Empresa (opcional)
+                  {lang === "es" ? "Empresa (opcional)" : "Company (optional)"}
                 </label>
                 <input
                   className="input-field"
                   name="empresa"
-                  placeholder="Nombre de tu empresa"
+                  placeholder={
+                    lang === "es" ? "Nombre de tu empresa" : "Company name"
+                  }
                 />
               </div>
             </div>
@@ -85,13 +98,19 @@ export function ContactSection() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="block text-xs font-medium text-brandGray mb-1">
-                  Correo electrónico
+                  {lang === "es"
+                    ? "Correo electrónico"
+                    : "Email address"}
                 </label>
                 <input
                   type="email"
                   className="input-field"
                   name="email"
-                  placeholder="tucorreo@ejemplo.com"
+                  placeholder={
+                    lang === "es"
+                      ? "tucorreo@ejemplo.com"
+                      : "youremail@example.com"
+                  }
                   required
                 />
               </div>
@@ -102,14 +121,14 @@ export function ContactSection() {
                 <input
                   className="input-field"
                   name="whatsapp"
-                  placeholder="+507..."
+                  placeholder={lang === "es" ? "+507..." : "WhatsApp number"}
                 />
               </div>
             </div>
 
             <div>
               <label className="block text-xs font-medium text-brandGray mb-1">
-                Servicio de interés
+                {lang === "es" ? "Servicio de interés" : "Service of interest"}
               </label>
               <select
                 className="input-field"
@@ -118,26 +137,60 @@ export function ContactSection() {
                 required
               >
                 <option value="" disabled>
-                  Selecciona una opción
+                  {lang === "es"
+                    ? "Selecciona una opción"
+                    : "Select an option"}
                 </option>
-                <option>Contabilidad general / estados financieros</option>
-                <option>Outsourcing contable en la nube</option>
-                <option>Facturación electrónica</option>
-                <option>Gestión tributaria (ITBMS, Renta)</option>
-                <option>Planilla y RR.HH.</option>
-                <option>Consultoría / trámites (RUC, Aviso de Operación)</option>
-                <option>Otro (especificar en el mensaje)</option>
+                <option>
+                  {lang === "es"
+                    ? "Contabilidad general / estados financieros"
+                    : "General accounting / financial statements"}
+                </option>
+                <option>
+                  {lang === "es"
+                    ? "Outsourcing contable en la nube"
+                    : "Cloud-based accounting outsourcing"}
+                </option>
+                <option>
+                  {lang === "es"
+                    ? "Facturación electrónica"
+                    : "Electronic invoicing"}
+                </option>
+                <option>
+                  {lang === "es"
+                    ? "Gestión tributaria (ITBMS, Renta)"
+                    : "Tax management (ITBMS, income tax)"}
+                </option>
+                <option>
+                  {lang === "es"
+                    ? "Planilla, RR.HH. y Anexo 03"
+                    : "Payroll, HR and Anexo 03"}
+                </option>
+                <option>
+                  {lang === "es"
+                    ? "Consultoría / trámites (RUC, Aviso de Operación)"
+                    : "Consulting / procedures (RUC, business license)"}
+                </option>
+                <option>
+                  {lang === "es"
+                    ? "Otro (especificar en el mensaje)"
+                    : "Other (specify in the message)"}
+                </option>
               </select>
             </div>
 
             <div>
               <label className="block text-xs font-medium text-brandGray mb-1">
-                Mensaje
+                {lang === "es" ? "Mensaje" : "Message"}
               </label>
               <textarea
                 className="input-field min-h-[120px] resize-none"
                 name="mensaje"
-                placeholder="Cuéntame brevemente tu situación y lo que necesitas."
+                placeholder={
+                  lang === "es"
+                    ? "Cuéntame brevemente tu situación y lo que necesitas."
+                    : "Briefly describe your situation and what you need."
+                }
                 required
               />
             </div>
@@ -148,17 +201,23 @@ export function ContactSection() {
               disabled={sending}
             >
               {sending
-                ? "Enviando..."
+                ? lang === "es"
+                  ? "Enviando..."
+                  : "Sending..."
                 : sent
-                ? "Mensaje enviado ✓"
-                : "Enviar consulta"}
+                ? lang === "es"
+                  ? "Mensaje enviado ✓"
+                  : "Message sent ✓"
+                : lang === "es"
+                ? "Enviar consulta"
+                : "Send inquiry"}
             </button>
 
             {sent && (
               <p className="text-[11px] text-green-600 pt-1">
-                Gracias por tu mensaje. Este formulario aún no está conectado a
-                un correo, pero puedes copiar el texto y enviarlo directamente a
-                WhatsApp o correo mientras se configura la integración.
+                {lang === "es"
+                  ? "Gracias por tu mensaje. Este formulario aún no está conectado a un correo, pero puedes copiar el texto y enviarlo directamente a WhatsApp o correo mientras se configura la integración."
+                  : "Thank you for your message. This form is not yet connected to an email inbox, but you can copy the text and send it directly via WhatsApp or email while the integration is configured."}
               </p>
             )}
           </form>
