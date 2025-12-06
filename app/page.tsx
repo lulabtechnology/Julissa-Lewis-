@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
 import { ContactSection } from "@/components/ContactSection";
+import { IntegrityQuote } from "@/components/IntegrityQuote";
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <Navbar />
       <Hero />
       <About />
+      <IntegrityQuote />
       <Services />
       <ContactSection />
 
