@@ -2,7 +2,7 @@ export function About() {
   return (
     <section
       id="sobre-mi"
-      className="section-container py-14 sm:py-16 lg:py-20"
+      className="section-container py-14 sm:py-16 lg:py-20 animate-fade-up"
     >
       <div className="grid gap-10 lg:grid-cols-[1.2fr_minmax(0,1fr)] items-start">
         <div className="space-y-5">
