@@ -1,23 +1,47 @@
 import Image from "next/image";
 
-export function Navbar() {
+type Lang = "es" | "en";
+
+interface NavbarProps {
+  lang: Lang;
+  toggleLang: () => void;
+}
+
+export function Navbar({ lang, toggleLang }: NavbarProps) {
+  const labels =
+    lang === "es"
+      ? {
+          about: "Sobre mí",
+          services: "Servicios",
+          contact: "Contacto",
+          cta: "Agenda una llamada"
+        }
+      : {
+          about: "About",
+          services: "Services",
+          contact: "Contact",
+          cta: "Schedule a call"
+        };
+
   return (
     <header className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-gray-100 animate-fade-in">
       <div className="section-container flex items-center justify-between py-3">
         <div className="flex items-center gap-3">
-          {/* Logo */}
-          <div className="relative h-10 w-36">
+          {/* Logo un poco más grande */}
+          <div className="relative h-12 w-44">
             <Image
               src="/images/logo-julissa-lewis.png"
               alt="Logo Julissa Lewis"
               fill
               className="object-contain"
-              sizes="144px"
+              sizes="176px"
             />
           </div>
           <div className="hidden sm:flex flex-col">
             <span className="text-[10px] uppercase tracking-[0.18em] text-brandGray">
-              Contabilidad & Finanzas
+              {lang === "es"
+                ? "Contabilidad & Finanzas"
+                : "Accounting & Finance"}
             </span>
             <span className="text-sm font-semibold text-brandNavy">
               Julissa Lewis, CPA
@@ -30,28 +54,39 @@ export function Navbar() {
             href="#sobre-mi"
             className="text-brandNavy/80 hover:text-brandNavy transition-colors"
           >
-            Sobre mí
+            {labels.about}
           </a>
           <a
             href="#servicios"
             className="text-brandNavy/80 hover:text-brandNavy transition-colors"
           >
-            Servicios
+            {labels.services}
           </a>
           <a
             href="#contacto"
             className="text-brandNavy/80 hover:text-brandNavy transition-colors"
           >
-            Contacto
+            {labels.contact}
           </a>
         </nav>
 
-        <a
-          href="#contacto"
-          className="btn-primary text-xs sm:text-sm px-4 py-2"
-        >
-          Agenda una llamada
-        </a>
+        <div className="flex items-center gap-3">
+          {/* Botón idioma */}
+          <button
+            type="button"
+            onClick={toggleLang}
+            className="text-[11px] font-semibold px-3 py-1 rounded-full border border-brandNavy/15 bg-white/70 text-brandNavy hover:bg-brandNavy hover:text-white transition"
+          >
+            {lang === "es" ? "EN" : "ES"}
+          </button>
+
+          <a
+            href="#contacto"
+            className="btn-primary text-xs sm:text-sm px-4 py-2"
+          >
+            {labels.cta}
+          </a>
+        </div>
       </div>
     </header>
   );
