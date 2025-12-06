@@ -10,7 +10,6 @@ export function ContactSection() {
     e.preventDefault();
     setSending(true);
 
-    // Por ahora, solo mostramos un mensaje de éxito simulado.
     setTimeout(() => {
       setSending(false);
       setSent(true);
@@ -20,7 +19,7 @@ export function ContactSection() {
   return (
     <section
       id="contacto"
-      className="section-container py-14 sm:py-16 lg:py-20"
+      className="section-container py-14 sm:py-16 lg:py-20 animate-fade-up"
     >
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
         <div className="space-y-5">
