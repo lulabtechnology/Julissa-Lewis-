@@ -37,7 +37,7 @@ export function Services() {
       id="servicios"
       className="bg-white/80 border-y border-gray-100 py-14 sm:py-16 lg:py-20"
     >
-      <div className="section-container space-y-10">
+      <div className="section-container space-y-10 animate-fade-up">
         <div className="max-w-2xl space-y-3">
           <span className="badge-pill">Servicios principales</span>
           <h2 className="text-2xl sm:text-3xl font-semibold text-brandNavy">
@@ -52,7 +52,10 @@ export function Services() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {services.map((service) => (
-            <article key={service.title} className="card overflow-hidden">
+            <article
+              key={service.title}
+              className="card overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-transform duration-300"
+            >
               <div className="relative h-40 w-full">
                 <Image
                   src={service.image}
