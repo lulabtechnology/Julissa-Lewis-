@@ -12,7 +12,8 @@ export function Hero() {
       <div className="section-container relative py-16 lg:py-20 grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-center animate-fade-up">
         {/* Columna texto */}
         <div className="space-y-8">
-          <div className="badge-pill bg-white/10 border-white/25 text-[11px]">
+          {/* Badge dorado animado */}
+          <div className="badge-pill badge-gold text-[11px]">
             Modernizando su contabilidad con herramientas líderes
           </div>
 
@@ -109,14 +110,17 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="relative h-52 sm:h-64 md:h-72 card overflow-hidden animate-fade-up">
-            <Image
-              src="/images/julissa-hero-office.jpg"
-              alt="Julissa Lewis en entorno profesional"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 360px, 100vw"
-            />
+          {/* Foto del hero: ahora se ve completa */}
+          <div className="card overflow-hidden animate-fade-up flex items-center justify-center bg-[#020617]">
+            <div className="relative w-full max-w-sm aspect-[3/4]">
+              <Image
+                src="/images/julissa-hero-office.jpg"
+                alt="Julissa Lewis en entorno profesional"
+                fill
+                className="object-contain"
+                sizes="(min-width: 1024px) 384px, 80vw"
+              />
+            </div>
           </div>
         </div>
       </div>
