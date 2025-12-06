@@ -15,12 +15,14 @@ body {
   @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
+/* Tarjetas más blancas, no tan gris translúcido */
 .card {
-  @apply bg-white/90 backdrop-blur shadow-soft rounded-3xl border border-white/60;
+  @apply bg-white shadow-soft rounded-3xl border border-gray-100;
 }
 
+/* Píldora de sección más viva */
 .badge-pill {
-  @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-brandLightBlue/10 text-brandBlue border border-brandLightBlue/30;
+  @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-brandLightBlue/15 text-brandBlue border border-brandLightBlue/40;
 }
 
 .btn-primary {
@@ -32,5 +34,5 @@ body {
 }
 
 .input-field {
-  @apply w-full rounded-2xl border border-gray-200 bg-white/80 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brandTurquoise/70 focus:border-brandTurquoise/70 transition;
+  @apply w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brandTurquoise/70 focus:border-brandTurquoise/70 transition;
 }
