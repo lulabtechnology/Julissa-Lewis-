@@ -129,8 +129,8 @@ export function Hero({ lang }: HeroProps) {
                   {lang === "es" ? "Correo" : "Email"}
                 </dt>
                 <dd className="font-medium break-all">
-                  <a href="mailto:JJLCPA.financialserv@gmail.com">
-                    JJLCPA.financialserv@gmail.com
+                  <a href="mailto:jjlaccounting@julissalewis.com">
+                    jjlaccounting@julissalewis.com
                   </a>
                 </dd>
               </div>
