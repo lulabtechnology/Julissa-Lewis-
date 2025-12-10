@@ -56,10 +56,10 @@ export function ContactSection({ lang }: ContactSectionProps) {
                 {lang === "es" ? "Correo:" : "Email:"}
               </span>{" "}
               <a
-                href="mailto:JJLCPA.financialserv@gmail.com"
+                href="jjlaccounting@julissalewis.com"
                 className="underline"
               >
-                JJLCPA.financialserv@gmail.com
+                jjlaccounting@julissalewis.com
               </a>
             </p>
           </div>
