@@ -92,4 +92,62 @@ export function Hero({ lang }: HeroProps) {
         </div>
 
         <div className="space-y-5">
-          <div clas
+          <div className="card p-6 sm:p-7 text-brandNavy animate-fade-up">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brandGray mb-3">
+              {lang === "es" ? "Primer contacto" : "First contact"}
+            </p>
+            <h2 className="text-lg font-semibold mb-3">
+              {lang === "es"
+                ? "Agenda una sesión exploratoria"
+                : "Book an exploratory session"}
+            </h2>
+            <p className="text-xs text-brandGray/90 mb-4">
+              {lang === "es"
+                ? "Cuéntame sobre tu empresa y definimos juntos el esquema contable, fiscal y de planilla que más te conviene."
+                : "Tell me about your company and we will define together the accounting, tax and payroll scheme that best suits your business."}
+            </p>
+
+            <dl className="space-y-3 text-xs">
+              <div className="flex justify-between gap-4">
+                <dt className="text-brandGray">WhatsApp</dt>
+                <dd className="font-medium">
+                  <a href="https://wa.me/50767641014" target="_blank">
+                    +507 6764-1014
+                  </a>
+                </dd>
+              </div>
+              <div className="flex justify-between gap-4">
+                <dt className="text-brandGray">{lang === "es" ? "Correo" : "Email"}</dt>
+                <dd className="font-medium break-all">
+                  <a href="mailto:JJLCPA.financialserv@gmail.com">
+                    JJLCPA.financialserv@gmail.com
+                  </a>
+                </dd>
+              </div>
+            </dl>
+
+            <a href="#contacto" className="btn-primary w-full mt-5">
+              {lang === "es" ? "Enviar mi consulta" : "Send my inquiry"}
+            </a>
+          </div>
+
+          <div className="card overflow-hidden animate-fade-up flex items-center justify-center bg-[#020617]">
+            <div className="relative w-full max-w-sm aspect-[3/4]">
+              <Image
+                src="/images/julissa-hero-office.jpg"
+                alt={
+                  lang === "es"
+                    ? "Julissa Lewis en entorno profesional"
+                    : "Julissa Lewis in a professional setting"
+                }
+                fill
+                className="object-contain"
+                sizes="(min-width: 1024px) 384px, 80vw"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
