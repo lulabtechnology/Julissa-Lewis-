@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 
 type Lang = "es" | "en";
 
@@ -8,18 +8,69 @@ interface ContactSectionProps {
   lang: Lang;
 }
 
-export function ContactSection({ lang }: ContactSectionProps) {
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
+const EMAIL_TO = "jjlaccounting@julissalewis.com";
 
+export function ContactSection({ lang }: ContactSectionProps) {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSending(true);
 
-    setTimeout(() => {
-      setSending(false);
-      setSent(true);
-    }, 900);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const nombre = String(data.get("nombre") ?? "");
+    const empresa = String(data.get("empresa") ?? "");
+    const email = String(data.get("email") ?? "");
+    const whatsapp = String(data.get("whatsapp") ?? "");
+    const servicio = String(data.get("servicio") ?? "");
+    const mensaje = String(data.get("mensaje") ?? "");
+
+    const subject =
+      lang === "es"
+        ? "Nueva consulta desde julissalewis.com"
+        : "New inquiry from julissalewis.com";
+
+    const body =
+      lang === "es"
+        ? `Hola Julissa,
+
+Recibiste una nueva consulta desde el sitio web.
+
+Nombre: ${nombre}
+Empresa: ${empresa}
+Correo: ${email}
+WhatsApp: ${whatsapp}
+Servicio de interés: ${servicio}
+
+Mensaje:
+${mensaje}
+
+-- 
+Enviado desde julissalewis.com`
+        : `Hi Julissa,
+
+You received a new inquiry from the website.
+
+Name: ${nombre}
+Company: ${empresa}
+Email: ${email}
+WhatsApp: ${whatsapp}
+Service of interest: ${servicio}
+
+Message:
+${mensaje}
+
+--
+Sent from julissalewis.com`;
+
+    const mailto = `mailto:${EMAIL_TO}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    // Abre la app de correo (móvil y desktop)
+    window.location.href = mailto;
+
+    // Opcional: limpiar campos después de abrir el correo
+    form.reset();
   }
 
   return (
@@ -36,8 +87,8 @@ export function ContactSection({ lang }: ContactSectionProps) {
           </h2>
           <p className="text-sm sm:text-base text-brandGray max-w-xl">
             {lang === "es"
-              ? "Completa el formulario y recibirás una respuesta para coordinar una llamada o una reunión virtual donde revisaremos tu caso y definiremos el alcance adecuado."
-              : "Fill out the form and you will receive a response to schedule a call or virtual meeting where we will review your case and define the right scope."}
+              ? "Al enviar, se abrirá tu aplicación de correo con el mensaje listo para enviar."
+              : "When you submit, your email app will open with the message ready to send."}
           </p>
 
           <div className="text-sm text-brandGray space-y-1">
@@ -55,11 +106,8 @@ export function ContactSection({ lang }: ContactSectionProps) {
               <span className="font-semibold text-brandNavy">
                 {lang === "es" ? "Correo:" : "Email:"}
               </span>{" "}
-              <a
-                href="jjlaccounting@julissalewis.com"
-                className="underline"
-              >
-                jjlaccounting@julissalewis.com
+              <a href={`mailto:${EMAIL_TO}`} className="underline">
+                {EMAIL_TO}
               </a>
             </p>
           </div>
@@ -75,9 +123,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
                 <input
                   className="input-field"
                   name="nombre"
-                  placeholder={
-                    lang === "es" ? "Tu nombre" : "Your full name"
-                  }
+                  placeholder={lang === "es" ? "Tu nombre" : "Your full name"}
                   required
                 />
               </div>
@@ -88,9 +134,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
                 <input
                   className="input-field"
                   name="empresa"
-                  placeholder={
-                    lang === "es" ? "Nombre de tu empresa" : "Company name"
-                  }
+                  placeholder={lang === "es" ? "Nombre de tu empresa" : "Company name"}
                 />
               </div>
             </div>
@@ -98,19 +142,13 @@ export function ContactSection({ lang }: ContactSectionProps) {
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="block text-xs font-medium text-brandGray mb-1">
-                  {lang === "es"
-                    ? "Correo electrónico"
-                    : "Email address"}
+                  {lang === "es" ? "Correo electrónico" : "Email address"}
                 </label>
                 <input
                   type="email"
                   className="input-field"
                   name="email"
-                  placeholder={
-                    lang === "es"
-                      ? "tucorreo@ejemplo.com"
-                      : "youremail@example.com"
-                  }
+                  placeholder={lang === "es" ? "tucorreo@ejemplo.com" : "youremail@example.com"}
                   required
                 />
               </div>
@@ -130,16 +168,9 @@ export function ContactSection({ lang }: ContactSectionProps) {
               <label className="block text-xs font-medium text-brandGray mb-1">
                 {lang === "es" ? "Servicio de interés" : "Service of interest"}
               </label>
-              <select
-                className="input-field"
-                name="servicio"
-                defaultValue=""
-                required
-              >
+              <select className="input-field" name="servicio" defaultValue="" required>
                 <option value="" disabled>
-                  {lang === "es"
-                    ? "Selecciona una opción"
-                    : "Select an option"}
+                  {lang === "es" ? "Selecciona una opción" : "Select an option"}
                 </option>
                 <option>
                   {lang === "es"
@@ -152,9 +183,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
                     : "Cloud-based accounting outsourcing"}
                 </option>
                 <option>
-                  {lang === "es"
-                    ? "Facturación electrónica"
-                    : "Electronic invoicing"}
+                  {lang === "es" ? "Facturación electrónica" : "Electronic invoicing"}
                 </option>
                 <option>
                   {lang === "es"
@@ -172,9 +201,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
                     : "Consulting / procedures (RUC, business license)"}
                 </option>
                 <option>
-                  {lang === "es"
-                    ? "Otro (especificar en el mensaje)"
-                    : "Other (specify in the message)"}
+                  {lang === "es" ? "Otro (especificar en el mensaje)" : "Other (specify in the message)"}
                 </option>
               </select>
             </div>
@@ -195,31 +222,15 @@ export function ContactSection({ lang }: ContactSectionProps) {
               />
             </div>
 
-            <button
-              type="submit"
-              className="btn-primary w-full"
-              disabled={sending}
-            >
-              {sending
-                ? lang === "es"
-                  ? "Enviando..."
-                  : "Sending..."
-                : sent
-                ? lang === "es"
-                  ? "Mensaje enviado ✓"
-                  : "Message sent ✓"
-                : lang === "es"
-                ? "Enviar consulta"
-                : "Send inquiry"}
+            <button type="submit" className="btn-primary w-full">
+              {lang === "es" ? "Enviar por correo" : "Send via email"}
             </button>
 
-            {sent && (
-              <p className="text-[11px] text-green-600 pt-1">
-                {lang === "es"
-                  ? "Gracias por tu mensaje. Este formulario aún no está conectado a un correo, pero puedes copiar el texto y enviarlo directamente a WhatsApp o correo mientras se configura la integración."
-                  : "Thank you for your message. This form is not yet connected to an email inbox, but you can copy the text and send it directly via WhatsApp or email while the integration is configured."}
-              </p>
-            )}
+            <p className="text-[11px] text-brandGray pt-1">
+              {lang === "es"
+                ? "Al presionar, se abrirá tu aplicación de correo con el mensaje listo para enviar."
+                : "When you press, your email app will open with the message ready to send."}
+            </p>
           </form>
         </div>
       </div>
