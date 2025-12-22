@@ -27,16 +27,18 @@ export function Navbar({ lang, toggleLang }: NavbarProps) {
     <header className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-gray-100 animate-fade-in">
       <div className="section-container flex items-center justify-between py-3">
         <div className="flex items-center gap-3">
-          {/* Logo un poco más grande */}
-          <div className="relative h-12 w-44">
+          {/* Logo (un poco más grande, responsive) */}
+          <div className="relative h-12 w-44 sm:h-14 sm:w-52">
             <Image
               src="/images/logo-julissa-lewis.png"
               alt="Logo Julissa Lewis"
               fill
               className="object-contain"
-              sizes="176px"
+              sizes="(min-width: 640px) 208px, 176px"
+              priority
             />
           </div>
+
           <div className="hidden sm:flex flex-col">
             <span className="text-[10px] uppercase tracking-[0.18em] text-brandGray">
               {lang === "es"
@@ -71,7 +73,6 @@ export function Navbar({ lang, toggleLang }: NavbarProps) {
         </nav>
 
         <div className="flex items-center gap-3">
-          {/* Botón idioma */}
           <button
             type="button"
             onClick={toggleLang}
