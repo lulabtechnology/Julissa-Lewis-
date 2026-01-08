@@ -119,8 +119,10 @@ export function Hero({ lang }: HeroProps) {
               <div className="flex justify-between gap-4">
                 <dt className="text-brandGray">{lang === "es" ? "Correo" : "Email"}</dt>
                 <dd className="font-medium break-all">
-                  <a href="mailto:JJLCPA.financialserv@gmail.com">
-                    JJLCPA.financialserv@gmail.com
+                  <a href="mailto:jjlaccounting@julissalewis.com
+">
+                    jjlaccounting@julissalewis.com
+
                   </a>
                 </dd>
               </div>
