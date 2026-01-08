@@ -1,190 +1,135 @@
-"use client";
-
-import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
-import Container from "@/components/ui/Container";
-import Card from "@/components/ui/Card";
-import { prisma, type PrismaService } from "@/content/prisma";
-import { useLanguage } from "@/components/i18n/useLanguage";
-import { deriveBullets } from "@/lib/deriveBullets";
-import { cn } from "@/lib/utils";
-import { Film, Gamepad2, Headphones, Layers3, PlayCircle, Radio, Trophy } from "lucide-react";
 
-function iconFor(hint: PrismaService["iconHint"]) {
-  const props = { className: "h-4 w-4" };
-  switch (hint) {
-    case "sport": return <Trophy {...props} />;
-    case "connect": return <Radio {...props} />;
-    case "replay": return <PlayCircle {...props} />;
-    case "content": return <Layers3 {...props} />;
-    case "studio": return <Headphones {...props} />;
-    case "production": return <Film {...props} />;
-    case "play": return <Gamepad2 {...props} />;
-  }
+type Lang = "es" | "en";
+
+interface ServicesProps {
+  lang: Lang;
 }
 
-export default function ServicesTabs() {
-  const { lang } = useLanguage();
-  const items = prisma.services.items;
-
-  const [active, setActive] = useState(items[0].key);
-
-  const current = useMemo(() => items.find((s) => s.key === active)!, [items, active]);
-  const bullets = useMemo(() => deriveBullets(current.description[lang], 3), [current, lang]);
-
-  const btnRefs = useRef<Array<HTMLButtonElement | null>>([]);
-
-  useEffect(() => {
-    btnRefs.current = btnRefs.current.slice(0, items.length);
-  }, [items.length]);
-
-  function onKeyDown(e: React.KeyboardEvent) {
-    const keys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Home", "End"];
-    if (!keys.includes(e.key)) return;
-
-    e.preventDefault();
-    const idx = items.findIndex((x) => x.key === active);
-    let next = idx;
-
-    if (e.key === "ArrowUp" || e.key === "ArrowLeft") next = Math.max(0, idx - 1);
-    if (e.key === "ArrowDown" || e.key === "ArrowRight") next = Math.min(items.length - 1, idx + 1);
-    if (e.key === "Home") next = 0;
-    if (e.key === "End") next = items.length - 1;
-
-    const nextKey = items[next].key;
-    setActive(nextKey);
-    btnRefs.current[next]?.focus();
+const servicesEs = [
+  {
+    title: "Contabilidad general y en la nube",
+    description:
+      "Registros contables básicos, estados financieros y gestión remota mediante plataformas como QuickBooks o Alegra.",
+    image: "/images/service-accounting.jpg",
+    tags: ["Estados financieros", "Contabilidad en la nube"]
+  },
+  {
+    title: "Facturación electrónica",
+    description:
+      "Implementación y gestión del sistema de facturación electrónica autorizado por la DGI, con capacitación al equipo.",
+    image: "/images/service-tax.jpg",
+    tags: ["DGI", "Cumplimiento"]
+  },
+  {
+    title: "Gestión tributaria y cumplimiento",
+    description:
+      "Cálculo y presentación de impuestos (ITBMS, Renta), con asesoría fiscal continua para evitar penalidades.",
+    image: "/images/service-payroll.jpg",
+    tags: ["ITBMS", "Impuesto sobre la renta"]
+  },
+  {
+    title: "Planilla, RR.HH. y Anexo 03 en la nube",
+    description:
+      "Procesamiento de planillas, prestaciones laborales, reportes a la CSS y elaboración del Anexo 03 mediante plataformas digitales.",
+    image: "/images/service-consulting.jpg",
+    tags: ["Planilla", "CSS", "Anexo 03"]
   }
+];
+
+const servicesEn = [
+  {
+    title: "General and cloud-based accounting",
+    description:
+      "Basic accounting records, financial statements and remote management using platforms such as QuickBooks or Alegra.",
+    image: "/images/service-accounting.jpg",
+    tags: ["Financial statements", "Cloud accounting"]
+  },
+  {
+    title: "Electronic invoicing",
+    description:
+      "Implementation and management of the electronic invoicing system authorized by the DGI, including staff training.",
+    image: "/images/service-tax.jpg",
+    tags: ["DGI", "Compliance"]
+  },
+  {
+    title: "Tax management and compliance",
+    description:
+      "Calculation and filing of taxes (ITBMS, income tax), with ongoing tax advisory to avoid penalties.",
+    image: "/images/service-payroll.jpg",
+    tags: ["ITBMS", "Income tax"]
+  },
+  {
+    title: "Payroll, HR and Anexo 03 in the cloud",
+    description:
+      "Payroll processing, labor benefits, CSS reports and Anexo 03 filing through digital platforms.",
+    image: "/images/service-consulting.jpg",
+    tags: ["Payroll", "CSS", "Anexo 03"]
+  }
+];
+
+export function Services({ lang }: ServicesProps) {
+  const tServices = lang === "es" ? servicesEs : servicesEn;
 
   return (
-    <section id="services" className="py-14 sm:py-16">
-      <Container>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
-              {prisma.services.sectionTitle[lang]}
-            </h2>
-            {prisma.services.sectionBody[lang] ? (
-              <p className="mt-3 max-w-2xl text-pretty text-sm font-semibold leading-7 text-slate-600 sm:text-base">
-                {prisma.services.sectionBody[lang]}
-              </p>
-            ) : null}
-          </div>
+    <section
+      id="servicios"
+      className="bg-[#EDF2F7] border-y border-gray-100 py-14 sm:py-16 lg:py-20"
+    >
+      <div className="section-container space-y-10 animate-fade-up">
+        <div className="max-w-2xl space-y-3">
+          <span className="badge-pill">
+            {lang === "es" ? "Servicios principales" : "Key services"}
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-brandNavy">
+            {lang === "es"
+              ? "Servicios contables y fiscales centrados en tu empresa."
+              : "Accounting and tax services centered on your business."}
+          </h2>
+          <p className="text-sm sm:text-base text-brandGray">
+            {lang === "es"
+              ? "Desde la organización contable básica hasta la gestión tributaria completa, te acompaño en cada etapa para que puedas enfocarte en el crecimiento de tu negocio."
+              : "From basic accounting organization to complete tax management, I support you at every stage so you can focus on growing your business."}
+          </p>
         </div>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-[1fr_2fr]">
-          <Card className="p-3">
-            <div
-              role="tablist"
-              aria-label="Services tabs"
-              className="flex flex-col gap-1"
-              onKeyDown={onKeyDown}
+        <div className="grid gap-6 md:grid-cols-2">
+          {tServices.map((service) => (
+            <article
+              key={service.title}
+              className="card overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-transform duration-300"
             >
-              {items.map((s, i) => {
-                const selected = s.key === active;
-                return (
-                  <button
-                    key={s.key}
-                    ref={(el) => { btnRefs.current[i] = el; }}
-                    role="tab"
-                    aria-selected={selected}
-                    aria-controls={`panel-${s.key}`}
-                    id={`tab-${s.key}`}
-                    onClick={() => setActive(s.key)}
-                    className={cn(
-                      "flex items-center justify-between rounded-xl px-3 py-3 text-left text-sm font-extrabold transition",
-                      "focus:outline-none focus:ring-2 focus:ring-blue-500/40",
-                      selected ? "bg-slate-900 text-white shadow-glow" : "text-slate-800 hover:bg-slate-100/70"
-                    )}
-                  >
-                    <span className="flex items-center gap-2">
-                      <span
-                        className={cn(
-                          "grid h-7 w-7 place-items-center rounded-lg",
-                          selected ? "bg-white/12" : "bg-blue-50 border border-blue-100"
-                        )}
-                      >
-                        <span className={cn(selected ? "text-white" : "text-blue-700")}>
-                          {iconFor(s.iconHint)}
-                        </span>
-                      </span>
-                      {s.name}
+              <div className="relative h-40 w-full">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 768px) 360px, 100vw"
+                />
+              </div>
+              <div className="p-5 sm:p-6 space-y-3">
+                <h3 className="text-sm sm:text-base font-semibold text-brandNavy">
+                  {service.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-brandGray">
+                  {service.description}
+                </p>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {service.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 rounded-full bg-brandLightBlue/10 text-[11px] text-brandBlue border border-brandLightBlue/30"
+                    >
+                      {tag}
                     </span>
-                    <span className={cn("text-xs font-black", selected ? "text-white/80" : "text-slate-400")}>
-                      →
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </Card>
-
-          <Card className="p-5 sm:p-6">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.key + lang}
-                id={`panel-${current.key}`}
-                role="tabpanel"
-                aria-labelledby={`tab-${current.key}`}
-                initial={{ opacity: 0, y: 10, filter: "blur(6px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: 10, filter: "blur(6px)" }}
-                transition={{ duration: 0.25 }}
-                className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center"
-              >
-                <div>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-black text-slate-700 shadow-soft">
-                    <span className="h-2 w-2 rounded-full bg-blue-600" />
-                    {current.focus[lang]}
-                  </div>
-
-                  <h3 className="mt-4 text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">
-                    {current.name}
-                  </h3>
-
-                  <p className="mt-3 text-pretty text-sm font-semibold leading-7 text-slate-600 sm:text-base">
-                    {current.description[lang]}
-                  </p>
-
-                  <div className="mt-5 grid gap-2 sm:grid-cols-3">
-                    {bullets.map((b, i) => (
-                      <div
-                        key={i}
-                        className="rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-xs font-black text-slate-700 shadow-soft"
-                      >
-                        {b}
-                      </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
-
-                {/* IMAGE: FIX (no cropping on desktop) */}
-                <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-soft">
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "radial-gradient(800px circle at 30% 20%, rgba(37,99,235,0.18), rgba(14,165,233,0.08), rgba(255,255,255,0.0))"
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-white/35" />
-
-                  <Image
-                    src={current.imageSrc}
-                    alt={current.imageAlt[lang]}
-                    width={1200}
-                    height={1200}
-                    sizes="(max-width: 1024px) 100vw, 520px"
-                    className="relative h-[280px] w-full object-contain p-4 sm:h-[340px] lg:h-[420px]"
-                    priority={active === items[0].key}
-                  />
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </Card>
+              </div>
+            </article>
+          ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
