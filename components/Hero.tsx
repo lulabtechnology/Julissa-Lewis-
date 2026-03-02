@@ -70,9 +70,9 @@ export function Hero({ lang }: HeroProps) {
               {t.primaryCta}
             </a>
             <a
-              href="https://www.linkedin.com/in/julissa-lewis-5a530b138"
+              href="https://www.linkedin.com/in/julissa-lewis-cpa-5a530b138?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn-outline"
             >
               {t.secondaryCta}
