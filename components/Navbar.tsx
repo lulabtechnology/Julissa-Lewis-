@@ -27,14 +27,14 @@ export function Navbar({ lang, toggleLang }: NavbarProps) {
     <header className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-gray-100 animate-fade-in">
       <div className="section-container flex items-center justify-between py-3">
         <div className="flex items-center gap-3">
-          {/* Logo (un poco más grande, responsive) */}
-          <div className="relative h-12 w-44 sm:h-14 sm:w-52">
+          {/* Logo (más grande, responsive) */}
+          <div className="relative h-14 w-56 sm:h-16 sm:w-64">
             <Image
               src="/images/logo-julissa-lewis.png"
               alt="Logo Julissa Lewis"
               fill
               className="object-contain"
-              sizes="(min-width: 640px) 208px, 176px"
+              sizes="(min-width: 640px) 256px, 224px"
               priority
             />
           </div>
