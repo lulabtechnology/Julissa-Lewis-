@@ -12,11 +12,11 @@ const content = {
     titleMain: "Contabilidad y gestión tributaria",
     titleHighlight: "con enfoque estratégico y ético.",
     paragraph:
-      "Servicio del ciclo contable completo, planilla, gestión tributaria y facturación electrónica, con más de 10 años de experiencia trabajando con empresas multinacionales y el respaldo del Colegio de Contadores Públicos Autorizados de Panamá (CCPAP).",
+      "Servicio del ciclo contable completo, planilla, gestión tributaria y facturación electrónica, con más de 15 años de experiencia corporativa en empresas multinacionales y el respaldo del Colegio de Contadores Públicos Autorizados de Panamá (CCPAP).",
     primaryCta: "Quiero una asesoría",
     secondaryCta: "Ver perfil en LinkedIn",
     stats: [
-      { label1: "+10 años", label2: "de experiencia" },
+      { label1: "+15 años", label2: "de experiencia" },
       { label1: "Full ciclo", label2: "contable y planilla" },
       { label1: "CCPAP", label2: "estándares éticos" },
       { label1: "QuickBooks", label2: "Certificación Pro-Advisor QuickBooks en línea" }
@@ -27,11 +27,11 @@ const content = {
     titleMain: "Accounting and tax management",
     titleHighlight: "with a strategic and ethical focus.",
     paragraph:
-      "Full-cycle accounting, payroll, tax management and e-invoicing services, backed by 10+ years of experience with multinational companies and the standards of the Certified Public Accountants Association of Panama (CCPAP).",
+      "Full-cycle accounting, payroll, tax management and e-invoicing services, backed by 15+ years of corporate experience with multinational companies and the standards of the Certified Public Accountants Association of Panama (CCPAP).",
     primaryCta: "Request a consultation",
     secondaryCta: "View LinkedIn profile",
     stats: [
-      { label1: "10+ years", label2: "of experience" },
+      { label1: "15+ years", label2: "of experience" },
       { label1: "Full cycle", label2: "accounting & payroll" },
       { label1: "CCPAP", label2: "ethical standards" },
       { label1: "QuickBooks", label2: "QuickBooks Online ProAdvisor Certification" }

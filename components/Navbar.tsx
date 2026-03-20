@@ -14,21 +14,22 @@ export function Navbar({ lang, toggleLang }: NavbarProps) {
           about: "Sobre mí",
           services: "Servicios",
           contact: "Contacto",
+          translation: "Servicios bilingües",
           cta: "Agenda una llamada"
         }
       : {
           about: "About",
           services: "Services",
           contact: "Contact",
+          translation: "Translation services",
           cta: "Schedule a call"
         };
 
   return (
     <header className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-gray-100 animate-fade-in">
-      <div className="section-container flex items-center justify-between py-3">
-        <div className="flex items-center gap-3">
-          {/* Logo (más grande, responsive) */}
-          <div className="relative h-14 w-56 sm:h-16 sm:w-64">
+      <div className="section-container flex items-center justify-between py-3 gap-4">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="relative h-14 w-56 sm:h-16 sm:w-64 shrink-0">
             <Image
               src="/images/logo-julissa-lewis.png"
               alt="Logo Julissa Lewis"
@@ -51,7 +52,7 @@ export function Navbar({ lang, toggleLang }: NavbarProps) {
           </div>
         </div>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
+        <nav className="hidden lg:flex items-center gap-5 text-sm">
           <a
             href="#sobre-mi"
             className="text-brandNavy/80 hover:text-brandNavy transition-colors"
@@ -70,9 +71,18 @@ export function Navbar({ lang, toggleLang }: NavbarProps) {
           >
             {labels.contact}
           </a>
+          <a
+            href="https://euridesyoung.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-brandTurquoise font-semibold hover:text-brandBlue transition-colors"
+          >
+            {labels.translation}
+            <span aria-hidden="true">↗</span>
+          </a>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0">
           <button
             type="button"
             onClick={toggleLang}
