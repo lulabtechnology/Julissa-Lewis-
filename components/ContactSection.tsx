@@ -9,6 +9,7 @@ interface ContactSectionProps {
 }
 
 const EMAIL_TO = "jjlaccounting@julissalewis.com";
+const TRANSLATION_URL = "https://euridesyoung.com/";
 
 export function ContactSection({ lang }: ContactSectionProps) {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -66,10 +67,7 @@ Sent from julissalewis.com`;
       subject
     )}&body=${encodeURIComponent(body)}`;
 
-    // Abre la app de correo (móvil y desktop)
     window.location.href = mailto;
-
-    // Opcional: limpiar campos después de abrir el correo
     form.reset();
   }
 
@@ -91,12 +89,13 @@ Sent from julissalewis.com`;
               : "When you submit, your email app will open with the message ready to send."}
           </p>
 
-          <div className="text-sm text-brandGray space-y-1">
+          <div className="text-sm text-brandGray space-y-2">
             <p>
               <span className="font-semibold text-brandNavy">WhatsApp:</span>{" "}
               <a
                 href="https://wa.me/50767641014"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="underline"
               >
                 +507 6764-1014
@@ -111,6 +110,16 @@ Sent from julissalewis.com`;
               </a>
             </p>
           </div>
+
+          <a
+            href={TRANSLATION_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline w-full sm:w-auto"
+          >
+            {lang === "es" ? "Ir a servicios de traducción" : "Go to translation services"}
+            <span aria-hidden="true" className="ml-1">↗</span>
+          </a>
         </div>
 
         <div className="card p-6 sm:p-7">

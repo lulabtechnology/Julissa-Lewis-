@@ -6,38 +6,52 @@ interface HeroProps {
   lang: Lang;
 }
 
+const TRANSLATION_URL = "https://euridesyoung.com/";
+
 const content = {
   es: {
     badge: "Modernizando su contabilidad con herramientas líderes",
-    titleMain: "Contabilidad y gestión tributaria",
-    titleHighlight: "con enfoque estratégico y ético.",
+    titleMain: "Estrategia financiera",
+    titleHighlight: "con visión global.",
     paragraph:
-      "Servicio del ciclo contable completo, planilla, gestión tributaria y facturación electrónica, con más de 15 años de experiencia corporativa en empresas multinacionales y el respaldo del Colegio de Contadores Públicos Autorizados de Panamá (CCPAP).",
+      "Soy Madre, Esposa y Profesional Independiente. Como fundadora de JJL Independent Accounting, modernizo la contabilidad de mis clientes con QuickBooks y Alegra, brindando información clara, oportuna y estratégica para la toma de decisiones.",
     primaryCta: "Quiero una asesoría",
     secondaryCta: "Ver perfil en LinkedIn",
+    translationCta: "Servicios de traducción",
+    cardEyebrow: "Primer contacto",
+    cardTitle: "Agenda una sesión exploratoria",
+    cardText:
+      "Cuéntame sobre tu empresa y definimos juntos el esquema contable, fiscal y de planilla que más te conviene.",
+    sendInquiry: "Enviar mi consulta",
     stats: [
-      { label1: "+15 años", label2: "de experiencia" },
-      { label1: "Full ciclo", label2: "contable y planilla" },
-      { label1: "CCPAP", label2: "estándares éticos" },
-      { label1: "QuickBooks", label2: "Certificación Pro-Advisor QuickBooks en línea" }
+      { label1: "+15 años", label2: "de experiencia corporativa" },
+      { label1: "QuickBooks", label2: "y Alegra" },
+      { label1: "CCPP", label2: "socio activo" },
+      { label1: "MICI", label2: "idoneidad profesional" }
     ]
   },
   en: {
-    badge: "Modernizing your accounting with leading tools",
-    titleMain: "Accounting and tax management",
-    titleHighlight: "with a strategic and ethical focus.",
+    badge: "Modernizing accounting with leading tools",
+    titleMain: "Strategic finance",
+    titleHighlight: "with a global vision.",
     paragraph:
-      "Full-cycle accounting, payroll, tax management and e-invoicing services, backed by 15+ years of corporate experience with multinational companies and the standards of the Certified Public Accountants Association of Panama (CCPAP).",
+      "I am a Mother, Wife, and Independent Professional. As the founder of JJL Independent Accounting, I modernize my clients' accounting operations with QuickBooks and Alegra, providing clear, timely, and strategic information for decision-making.",
     primaryCta: "Request a consultation",
     secondaryCta: "View LinkedIn profile",
+    translationCta: "Translation services",
+    cardEyebrow: "First contact",
+    cardTitle: "Book an exploratory session",
+    cardText:
+      "Tell me about your company and we will define together the accounting, tax, and payroll scheme that best suits your business.",
+    sendInquiry: "Send my inquiry",
     stats: [
-      { label1: "15+ years", label2: "of experience" },
-      { label1: "Full cycle", label2: "accounting & payroll" },
-      { label1: "CCPAP", label2: "ethical standards" },
-      { label1: "QuickBooks", label2: "QuickBooks Online ProAdvisor Certification" }
+      { label1: "15+ years", label2: "of corporate experience" },
+      { label1: "QuickBooks", label2: "and Alegra" },
+      { label1: "CCPP", label2: "active member" },
+      { label1: "MICI", label2: "licensed CPA" }
     ]
   }
-};
+} as const;
 
 export function Hero({ lang }: HeroProps) {
   const t = content[lang];
@@ -51,7 +65,7 @@ export function Hero({ lang }: HeroProps) {
 
       <div className="section-container relative py-16 lg:py-20 grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-center animate-fade-up">
         <div className="space-y-8">
-          <div className="badge-gold">{t.badge}</div>
+          <div className="badge-gold text-center sm:text-left">{t.badge}</div>
 
           <div className="space-y-5">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
@@ -73,9 +87,17 @@ export function Hero({ lang }: HeroProps) {
               href="https://www.linkedin.com/in/julissa-lewis-cpa-5a530b138?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-outline"
+              className="btn-outline bg-white/5"
             >
               {t.secondaryCta}
+            </a>
+            <a
+              href={TRANSLATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline bg-white/5"
+            >
+              {t.translationCta}
             </a>
           </div>
 
@@ -94,24 +116,16 @@ export function Hero({ lang }: HeroProps) {
         <div className="space-y-5">
           <div className="card p-6 sm:p-7 text-brandNavy animate-fade-up">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brandGray mb-3">
-              {lang === "es" ? "Primer contacto" : "First contact"}
+              {t.cardEyebrow}
             </p>
-            <h2 className="text-lg font-semibold mb-3">
-              {lang === "es"
-                ? "Agenda una sesión exploratoria"
-                : "Book an exploratory session"}
-            </h2>
-            <p className="text-xs text-brandGray/90 mb-4">
-              {lang === "es"
-                ? "Cuéntame sobre tu empresa y definimos juntos el esquema contable, fiscal y de planilla que más te conviene."
-                : "Tell me about your company and we will define together the accounting, tax and payroll scheme that best suits your business."}
-            </p>
+            <h2 className="text-lg font-semibold mb-3">{t.cardTitle}</h2>
+            <p className="text-xs text-brandGray/90 mb-4">{t.cardText}</p>
 
             <dl className="space-y-3 text-xs">
               <div className="flex justify-between gap-4">
                 <dt className="text-brandGray">WhatsApp</dt>
                 <dd className="font-medium">
-                  <a href="https://wa.me/50767641014" target="_blank">
+                  <a href="https://wa.me/50767641014" target="_blank" rel="noopener noreferrer">
                     +507 6764-1014
                   </a>
                 </dd>
@@ -119,17 +133,15 @@ export function Hero({ lang }: HeroProps) {
               <div className="flex justify-between gap-4">
                 <dt className="text-brandGray">{lang === "es" ? "Correo" : "Email"}</dt>
                 <dd className="font-medium break-all">
-                  <a href="mailto:jjlaccounting@julissalewis.com
-">
+                  <a href="mailto:jjlaccounting@julissalewis.com">
                     jjlaccounting@julissalewis.com
-
                   </a>
                 </dd>
               </div>
             </dl>
 
             <a href="#contacto" className="btn-primary w-full mt-5">
-              {lang === "es" ? "Enviar mi consulta" : "Send my inquiry"}
+              {t.sendInquiry}
             </a>
           </div>
 

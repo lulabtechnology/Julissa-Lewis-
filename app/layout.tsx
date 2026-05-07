@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Julissa Lewis | Servicios Contables y Tributarios",
+  title: "Julissa Lewis | Estrategia Financiera con Visión Global",
   description:
-    "Servicios de contabilidad general, facturación electrónica, gestión tributaria, planilla y RR.HH. en la nube, con más de 10 años de experiencia en empresas multinacionales."
+    "Servicios contables, tributarios y de transformación digital financiera con QuickBooks, Alegra y más de 15 años de experiencia corporativa."
 };
 
 export default function RootLayout({
@@ -14,9 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

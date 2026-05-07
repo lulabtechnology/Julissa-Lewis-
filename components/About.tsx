@@ -7,13 +7,12 @@ interface AboutProps {
 const content = {
   es: {
     badge: "Perfil profesional",
-    title: "Estrategia financiera con visión global.",
+    title: "Julissa Lewis | Estrategia financiera con visión global.",
     paragraphs: [
-      "Soy madre, esposa y profesional independiente, convencida de que los negocios sólidos se construyen sobre valores inquebrantables y una gestión financiera clara.",
-      "Mi trayectoria combina más de 15 años de experiencia corporativa en empresas transnacionales americanas y multinacionales globales, junto con una formación académica de alto nivel.",
-      "Como fundadora de JJL Independent Accounting, impulso la transformación digital financiera de mis clientes mediante herramientas líderes como QuickBooks, Alegra y soluciones en la nube, para ofrecer información oportuna, estratégica y útil en la toma de decisiones."
+      "Soy Madre, Esposa y Profesional Independiente, convencida de que los negocios sólidos se construyen sobre valores inquebrantables. Mi trayectoria combina más de 15 años de experiencia corporativa en empresas transnacionales americanas y multinacionales globales, con una formación académica de élite.",
+      "Como fundadora de JJL Independent Accounting, mi enfoque es la transformación digital financiera. Modernizo la contabilidad de mis clientes utilizando herramientas líderes como QuickBooks y Alegra, garantizando que tengan información clara, oportuna y estratégica para la toma de decisiones."
     ],
-    credentialsTitle: "Respaldo académico y profesional",
+    credentialsTitle: "Mi respaldo académico y profesional",
     credentials: [
       "Máster en Dirección en Finanzas – ADEN University.",
       "Especialización en Finanzas Corporativas y Avanzadas – The Georgetown University & ADEN University.",
@@ -22,26 +21,25 @@ const content = {
       "Socio Activo del Colegio de Contadores Públicos Autorizados de Panamá (CCPP) e Idónea ante el MICI."
     ],
     noteTitle: "Mi enfoque",
-    note: "Combino integridad, experiencia corporativa y tecnología financiera para construir una contabilidad más moderna, estratégica y confiable."
+    note: "Transformación digital financiera con integridad, experiencia corporativa y herramientas modernas para tomar decisiones con información clara y confiable."
   },
   en: {
     badge: "Professional profile",
-    title: "Strategic finance with a global vision.",
+    title: "Julissa Lewis | Strategic finance with a global vision.",
     paragraphs: [
-      "I am a mother, wife, and independent professional, firmly convinced that strong businesses are built on unwavering values and clear financial management.",
-      "My career combines more than 15 years of corporate experience in American transnationals and global multinationals, together with high-level academic training.",
-      "As the founder of JJL Independent Accounting, I lead my clients’ financial digital transformation through industry-leading tools such as QuickBooks, Alegra, and cloud-based solutions to deliver timely, strategic, and decision-ready information."
+      "I am a Mother, Wife, and Independent Professional, firmly believing that strong businesses are built on unwavering values. My career blends over 15 years of corporate experience in American transnationals and global multinationals with elite academic training.",
+      "As the founder of JJL Independent Accounting, my focus is on financial digital transformation. I modernize my clients' accounting operations using industry-leading tools like QuickBooks and Alegra, ensuring they have clear, timely, and strategic information for decision-making."
     ],
-    credentialsTitle: "Academic and professional credentials",
+    credentialsTitle: "Academic & professional credentials",
     credentials: [
       "Master in Financial Management – ADEN University.",
-      "Specialization in Corporate and Advanced Finance – The Georgetown University & ADEN University.",
+      "Specialization in Corporate & Advanced Finance – The Georgetown University & ADEN University.",
       "Postgraduate Degree in Management Accounting – Universidad Latina de Panamá.",
       "B.S. in Accounting – Universidad Latina de Panamá.",
       "Active Member of the Certified Public Accountants Association of Panama (CCPP) and Licensed CPA (MICI)."
     ],
     noteTitle: "My approach",
-    note: "I combine integrity, corporate experience, and financial technology to deliver accounting that is more modern, strategic, and reliable."
+    note: "Financial digital transformation with integrity, corporate experience, and modern tools to support decisions with clear and reliable information."
   }
 } as const;
 
