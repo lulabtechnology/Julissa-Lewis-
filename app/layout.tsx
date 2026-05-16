@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Julissa Lewis | Estrategia Financiera con Visión Global",
+  title: "JJL Independent Accounting | Servicios contables digitales en Panamá",
   description:
-    "Servicios contables, tributarios y de transformación digital financiera con QuickBooks, Alegra y más de 15 años de experiencia corporativa."
+    "Servicios contables digitales, gestión financiera estratégica, nómina, cumplimiento fiscal, SEM, operaciones de fuente extranjera y dirección financiera externa en Panamá."
 };
 
 export default function RootLayout({

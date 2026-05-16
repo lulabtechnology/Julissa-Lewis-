@@ -7,6 +7,7 @@ import { About } from "@/components/About";
 import { Services } from "@/components/Services";
 import { ContactSection } from "@/components/ContactSection";
 import { IntegrityQuote } from "@/components/IntegrityQuote";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 
 type Lang = "es" | "en";
 
@@ -25,6 +26,7 @@ export default function HomePage() {
       <IntegrityQuote lang={lang} />
       <Services lang={lang} />
       <ContactSection lang={lang} />
+      <WhatsAppFloat lang={lang} />
 
       <footer className="border-t border-gray-100 bg-white/90">
         <div className="section-container py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-brandGray">

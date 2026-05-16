@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Lang = "es" | "en";
 
 interface AboutProps {
@@ -6,40 +8,72 @@ interface AboutProps {
 
 const content = {
   es: {
-    badge: "Perfil profesional",
-    title: "Julissa Lewis | Estrategia financiera con visión global.",
-    paragraphs: [
-      "Soy Madre, Esposa y Profesional Independiente, convencida de que los negocios sólidos se construyen sobre valores inquebrantables. Mi trayectoria combina más de 15 años de experiencia corporativa en empresas transnacionales americanas y multinacionales globales, con una formación académica de élite.",
-      "Como fundadora de JJL Independent Accounting, mi enfoque es la transformación digital financiera. Modernizo la contabilidad de mis clientes utilizando herramientas líderes como QuickBooks y Alegra, garantizando que tengan información clara, oportuna y estratégica para la toma de decisiones."
-    ],
-    credentialsTitle: "Mi respaldo académico y profesional",
-    credentials: [
-      "Máster en Dirección en Finanzas – ADEN University.",
-      "Especialización en Finanzas Corporativas y Avanzadas – The Georgetown University & ADEN University.",
-      "Postgrado en Contabilidad Gerencial – Universidad Latina de Panamá.",
-      "Licenciada en Contabilidad – Universidad Latina de Panamá.",
-      "Socio Activo del Colegio de Contadores Públicos Autorizados de Panamá (CCPP) e Idónea ante el MICI."
-    ],
-    noteTitle: "Mi enfoque",
-    note: "Transformación digital financiera con integridad, experiencia corporativa y herramientas modernas para tomar decisiones con información clara y confiable."
+    badge: "Nuestro equipo",
+    title: "Dos perfiles ejecutivos para una gestión contable, financiera y laboral más completa.",
+    intro:
+      "JJL Independent Accounting combina dirección financiera senior, contabilidad digital, cumplimiento fiscal y administración de planilla bajo una estructura cercana, profesional y orientada al control.",
+    profiles: [
+      {
+        name: "Julissa Lewis",
+        role: "Fundadora & Contadora Principal",
+        title: "CPA, Consultora Financiera.",
+        image: "/images/julissa-lewis-new.jpg",
+        bio:
+          "Mi trayectoria combina más de 15 años de experiencia liderando las finanzas, los presupuestos y el control de gestión en reconocidas corporaciones transnacionales y de tecnología global, respaldada por una formación académica internacional (Georgetown University / ADEN Business School). Como Fundadora de la firma, me dedico a transformar la contabilidad tradicional en un modelo digital eficiente en la nube. Mi enfoque es brindarle estados financieros claros y un estricto control de cumplimiento ante la DGI para que pueda dirigir su negocio con total tranquilidad.",
+        highlights: [
+          "Dirección financiera y control de gestión",
+          "Estados financieros y cumplimiento ante la DGI",
+          "Transformación contable digital en la nube"
+        ]
+      },
+      {
+        name: "Jissbeth Lewis",
+        role: "Co-Fundadora & Especialista en Administración y Planilla",
+        title: "Especialista en Gestión de Nómina y Cumplimiento Laboral.",
+        image: "/images/jissbeth-lewis-payroll.jpg",
+        bio:
+          "Especialista en la administración de capital humano y procesamiento de nóminas con amplia trayectoria dentro de firmas globales de consultoría corporativa y servicios de externalización de primer nivel. Dirige de forma exclusiva nuestra suite de gestión de planilla, garantizando que el pago de sus empleados y el cálculo de sus obligaciones ante la Caja de Seguro Social (SIPE) y el Ministerio de Trabajo se ejecuten a tiempo, con total precisión y bajo los controles que su empresa exige.",
+        highlights: [
+          "Procesamiento experto de nómina local",
+          "Control de SIPE, CSS y obligaciones laborales",
+          "Administración de capital humano y prestaciones"
+        ]
+      }
+    ]
   },
   en: {
-    badge: "Professional profile",
-    title: "Julissa Lewis | Strategic finance with a global vision.",
-    paragraphs: [
-      "I am a Mother, Wife, and Independent Professional, firmly believing that strong businesses are built on unwavering values. My career blends over 15 years of corporate experience in American transnationals and global multinationals with elite academic training.",
-      "As the founder of JJL Independent Accounting, my focus is on financial digital transformation. I modernize my clients' accounting operations using industry-leading tools like QuickBooks and Alegra, ensuring they have clear, timely, and strategic information for decision-making."
-    ],
-    credentialsTitle: "Academic & professional credentials",
-    credentials: [
-      "Master in Financial Management – ADEN University.",
-      "Specialization in Corporate & Advanced Finance – The Georgetown University & ADEN University.",
-      "Postgraduate Degree in Management Accounting – Universidad Latina de Panamá.",
-      "B.S. in Accounting – Universidad Latina de Panamá.",
-      "Active Member of the Certified Public Accountants Association of Panama (CCPP) and Licensed CPA (MICI)."
-    ],
-    noteTitle: "My approach",
-    note: "Financial digital transformation with integrity, corporate experience, and modern tools to support decisions with clear and reliable information."
+    badge: "Our team",
+    title: "Two executive profiles for stronger accounting, financial, and labor management.",
+    intro:
+      "JJL Independent Accounting brings together senior financial direction, digital accounting, tax compliance, and payroll administration through a close, professional, control-oriented structure.",
+    profiles: [
+      {
+        name: "Julissa Lewis",
+        role: "Founder & Principal Accountant",
+        title: "CPA, Financial Consultant.",
+        image: "/images/julissa-lewis-new.jpg",
+        bio:
+          "My career combines more than 15 years of experience leading finance, budgeting, and management control for renowned transnational and global technology corporations, supported by international academic training (Georgetown University / ADEN Business School). As Founder of the firm, I focus on transforming traditional accounting into an efficient digital cloud-based model. My approach is to provide clear financial statements and strict DGI compliance control so you can lead your business with confidence.",
+        highlights: [
+          "Financial direction and management control",
+          "Financial statements and DGI compliance",
+          "Cloud-based digital accounting transformation"
+        ]
+      },
+      {
+        name: "Jissbeth Lewis",
+        role: "Co-Founder & Administration and Payroll Specialist",
+        title: "Payroll Management and Labor Compliance Specialist.",
+        image: "/images/jissbeth-lewis-payroll.jpg",
+        bio:
+          "Specialist in human capital administration and payroll processing with broad experience in global corporate consulting and top-tier outsourcing firms. She exclusively leads our payroll management suite, ensuring employee payments and the calculation of obligations before the Social Security Fund (SIPE) and the Ministry of Labor are executed on time, accurately, and under the controls your company requires.",
+        highlights: [
+          "Expert local payroll processing",
+          "SIPE, CSS, and labor obligation control",
+          "Human capital and benefit administration"
+        ]
+      }
+    ]
   }
 } as const;
 
@@ -51,43 +85,58 @@ export function About({ lang }: AboutProps) {
       id="sobre-mi"
       className="section-container py-14 sm:py-16 lg:py-20 animate-fade-up"
     >
-      <div className="grid gap-10 lg:grid-cols-[1.2fr_minmax(0,1fr)] items-start">
-        <div className="space-y-5">
-          <span className="badge-pill">{t.badge}</span>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-brandNavy">
-            {t.title}
-          </h2>
+      <div className="max-w-3xl space-y-4 mb-10">
+        <span className="badge-pill">{t.badge}</span>
+        <h2 className="text-2xl sm:text-3xl font-semibold text-brandNavy">
+          {t.title}
+        </h2>
+        <p className="text-sm sm:text-base text-brandGray leading-relaxed">
+          {t.intro}
+        </p>
+      </div>
 
-          {t.paragraphs.map((paragraph) => (
-            <p
-              key={paragraph}
-              className="text-sm sm:text-base text-brandGray leading-relaxed"
-            >
-              {paragraph}
-            </p>
-          ))}
-        </div>
+      <div className="grid gap-7 lg:grid-cols-2">
+        {t.profiles.map((profile) => (
+          <article key={profile.name} className="card overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-transform duration-300">
+            <div className="relative h-[420px] sm:h-[500px] w-full bg-[#EEF6FA]">
+              <Image
+                src={profile.image}
+                alt={`${profile.name} - ${profile.role}`}
+                fill
+                className="object-cover object-[center_top]"
+                sizes="(min-width: 1024px) 520px, 100vw"
+              />
+            </div>
+            <div className="p-6 sm:p-7 space-y-4">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brandTurquoise">
+                  {profile.role}
+                </p>
+                <h3 className="mt-2 text-xl font-semibold text-brandNavy">
+                  {profile.name}
+                </h3>
+                <p className="text-sm font-medium text-brandBlue mt-1">
+                  {profile.title}
+                </p>
+              </div>
 
-        <div className="card p-6 sm:p-7 space-y-5">
-          <h3 className="text-sm font-semibold text-brandNavy">
-            {t.credentialsTitle}
-          </h3>
-          <ul className="space-y-3 text-sm text-brandGray leading-relaxed">
-            {t.credentials.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span className="text-brandTurquoise font-bold">•</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+              <p className="text-sm text-brandGray leading-relaxed">
+                {profile.bio}
+              </p>
 
-          <div className="rounded-2xl border border-brandLightBlue/30 bg-brandLightBlue/10 p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brandBlue mb-2">
-              {t.noteTitle}
-            </p>
-            <p className="text-sm text-brandGray leading-relaxed">{t.note}</p>
-          </div>
-        </div>
+              <div className="rounded-2xl border border-brandLightBlue/30 bg-brandLightBlue/10 p-4">
+                <ul className="space-y-2 text-sm text-brandGray">
+                  {profile.highlights.map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <span className="mt-[2px] text-brandTurquoise font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

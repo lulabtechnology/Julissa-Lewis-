@@ -13,20 +13,20 @@ export function Navbar({ lang, toggleLang }: NavbarProps) {
   const labels =
     lang === "es"
       ? {
-          about: "Sobre mí",
-          services: "Servicios",
-          contact: "Contacto",
-          translation: "Servicios de traducción",
-          cta: "Agenda una llamada",
-          ctaMobile: "Llamada"
+          about: "Nuestro equipo",
+          services: "Planes",
+          contact: "Cotizar",
+          translation: "Traducciones oficiales",
+          cta: "Completar cuestionario",
+          ctaMobile: "Cotizar"
         }
       : {
-          about: "About",
-          services: "Services",
-          contact: "Contact",
-          translation: "Translation services",
-          cta: "Schedule a call",
-          ctaMobile: "Call"
+          about: "Our team",
+          services: "Plans",
+          contact: "Quote",
+          translation: "Official translations",
+          cta: "Complete questionnaire",
+          ctaMobile: "Quote"
         };
 
   return (

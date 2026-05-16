@@ -10,45 +10,45 @@ const TRANSLATION_URL = "https://euridesyoung.com/";
 
 const content = {
   es: {
-    badge: "Modernizando su contabilidad con herramientas líderes",
-    titleMain: "Estrategia financiera",
-    titleHighlight: "con visión global.",
+    badge: "Firma contable digital en Panamá",
+    titleMain: "Servicios contables digitales",
+    titleHighlight: "y gestión financiera estratégica.",
     paragraph:
-      "Soy Madre, Esposa y Profesional Independiente. Como fundadora de JJL Independent Accounting, modernizo la contabilidad de mis clientes con QuickBooks y Alegra, brindando información clara, oportuna y estratégica para la toma de decisiones.",
-    primaryCta: "Quiero una asesoría",
+      "Modernizamos la contabilidad de su negocio utilizando sistemas avanzados en la nube y automatización de registros. Ofrecemos soluciones integrales en finanzas, nómina y cumplimiento fiscal, diseñadas especialmente para empresas locales, operaciones de fuente extranjera y Empresas bajo el régimen SEM en Panamá.",
+    primaryCta: "Cotizar solución a la medida",
     secondaryCta: "Ver perfil en LinkedIn",
-    translationCta: "Servicios de traducción",
-    cardEyebrow: "Primer contacto",
-    cardTitle: "Agenda una sesión exploratoria",
+    translationCta: "Traducciones oficiales",
+    cardEyebrow: "JJL Independent Accounting",
+    cardTitle: "Contabilidad clara, digital y estratégica",
     cardText:
-      "Cuéntame sobre tu empresa y definimos juntos el esquema contable, fiscal y de planilla que más te conviene.",
-    sendInquiry: "Enviar mi consulta",
+      "Perfilamos la estructura de su organización para recomendar el nivel de soporte contable, fiscal, financiero y de planilla que realmente necesita.",
+    sendInquiry: "Completar cuestionario",
     stats: [
       { label1: "+15 años", label2: "de experiencia corporativa" },
-      { label1: "QuickBooks", label2: "y Alegra" },
-      { label1: "CCPP", label2: "socio activo" },
-      { label1: "MICI", label2: "idoneidad profesional" }
+      { label1: "DGI", label2: "cumplimiento fiscal local" },
+      { label1: "SEM", label2: "operaciones multinacionales" },
+      { label1: "Nube", label2: "gestión digital segura" }
     ]
   },
   en: {
-    badge: "Modernizing accounting with leading tools",
-    titleMain: "Strategic finance",
-    titleHighlight: "with a global vision.",
+    badge: "Digital accounting firm in Panama",
+    titleMain: "Digital accounting services",
+    titleHighlight: "and strategic financial management.",
     paragraph:
-      "I am a Mother, Wife, and Independent Professional. As the founder of JJL Independent Accounting, I modernize my clients' accounting operations with QuickBooks and Alegra, providing clear, timely, and strategic information for decision-making.",
-    primaryCta: "Request a consultation",
+      "We modernize your business accounting through advanced cloud-based systems and automated records. We provide integrated solutions in finance, payroll, and tax compliance, designed for local companies, foreign-source operations, and SEM regime companies in Panama.",
+    primaryCta: "Request a tailored proposal",
     secondaryCta: "View LinkedIn profile",
-    translationCta: "Translation services",
-    cardEyebrow: "First contact",
-    cardTitle: "Book an exploratory session",
+    translationCta: "Official translations",
+    cardEyebrow: "JJL Independent Accounting",
+    cardTitle: "Clear, digital, and strategic accounting",
     cardText:
-      "Tell me about your company and we will define together the accounting, tax, and payroll scheme that best suits your business.",
-    sendInquiry: "Send my inquiry",
+      "We profile your organization structure to recommend the right level of accounting, tax, financial, and payroll support.",
+    sendInquiry: "Complete questionnaire",
     stats: [
       { label1: "15+ years", label2: "of corporate experience" },
-      { label1: "QuickBooks", label2: "and Alegra" },
-      { label1: "CCPP", label2: "active member" },
-      { label1: "MICI", label2: "licensed CPA" }
+      { label1: "DGI", label2: "local tax compliance" },
+      { label1: "SEM", label2: "multinational operations" },
+      { label1: "Cloud", label2: "secure digital management" }
     ]
   }
 } as const;
@@ -63,7 +63,7 @@ export function Hero({ lang }: HeroProps) {
         <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-brandLightBlue blur-3xl animate-float-slow" />
       </div>
 
-      <div className="section-container relative py-16 lg:py-20 grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-center animate-fade-up">
+      <div className="section-container relative py-16 lg:py-20 grid gap-12 lg:grid-cols-[minmax(0,1.16fr)_minmax(0,0.84fr)] items-center animate-fade-up">
         <div className="space-y-8">
           <div className="badge-gold text-center sm:text-left">{t.badge}</div>
 
@@ -74,7 +74,7 @@ export function Hero({ lang }: HeroProps) {
                 {t.titleHighlight}
               </span>
             </h1>
-            <p className="text-sm sm:text-base text-white/85 max-w-xl">
+            <p className="text-sm sm:text-base text-white/85 max-w-2xl leading-relaxed">
               {t.paragraph}
             </p>
           </div>
@@ -103,7 +103,7 @@ export function Hero({ lang }: HeroProps) {
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-white/80 pt-4">
             {t.stats.map((s) => (
-              <div key={s.label1}>
+              <div key={s.label1} className="rounded-2xl border border-white/10 bg-white/5 p-3">
                 <div className="text-base font-semibold text-white">
                   {s.label1}
                 </div>
@@ -114,12 +114,29 @@ export function Hero({ lang }: HeroProps) {
         </div>
 
         <div className="space-y-5">
+          <div className="card overflow-hidden animate-fade-up bg-white/95">
+            <div className="relative w-full aspect-[4/5]">
+              <Image
+                src="/images/julissa-lewis-new.jpg"
+                alt={
+                  lang === "es"
+                    ? "Julissa Lewis, fundadora de JJL Independent Accounting"
+                    : "Julissa Lewis, founder of JJL Independent Accounting"
+                }
+                fill
+                priority
+                className="object-cover object-[center_top]"
+                sizes="(min-width: 1024px) 430px, 92vw"
+              />
+            </div>
+          </div>
+
           <div className="card p-6 sm:p-7 text-brandNavy animate-fade-up">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brandGray mb-3">
               {t.cardEyebrow}
             </p>
             <h2 className="text-lg font-semibold mb-3">{t.cardTitle}</h2>
-            <p className="text-xs text-brandGray/90 mb-4">{t.cardText}</p>
+            <p className="text-xs text-brandGray/90 mb-4 leading-relaxed">{t.cardText}</p>
 
             <dl className="space-y-3 text-xs">
               <div className="flex justify-between gap-4">
@@ -143,22 +160,6 @@ export function Hero({ lang }: HeroProps) {
             <a href="#contacto" className="btn-primary w-full mt-5">
               {t.sendInquiry}
             </a>
-          </div>
-
-          <div className="card overflow-hidden animate-fade-up flex items-center justify-center bg-[#020617]">
-            <div className="relative w-full max-w-sm aspect-[3/4]">
-              <Image
-                src="/images/julissa-hero-office.jpg"
-                alt={
-                  lang === "es"
-                    ? "Julissa Lewis en entorno profesional"
-                    : "Julissa Lewis in a professional setting"
-                }
-                fill
-                className="object-contain"
-                sizes="(min-width: 1024px) 384px, 80vw"
-              />
-            </div>
           </div>
         </div>
       </div>
