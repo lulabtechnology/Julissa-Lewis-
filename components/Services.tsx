@@ -157,12 +157,9 @@ export function Services({ lang }: ServicesProps) {
               key={plan.name}
               className="card p-6 sm:p-7 hover:-translate-y-1 hover:shadow-xl transition-transform duration-300 flex flex-col"
             >
-              <div className="mb-5 flex items-center justify-between gap-4">
+              <div className="mb-5 flex items-center">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brandNavy text-white text-sm font-bold">
                   {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="rounded-full bg-brandTurquoise/10 px-3 py-1 text-[11px] font-semibold text-brandTurquoise">
-                  {lang === "es" ? "Sin tarifas públicas" : "No public fees"}
                 </span>
               </div>
 
