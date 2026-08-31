@@ -65,3 +65,15 @@ body {
     box-shadow: 0 0 0 rgba(15, 23, 42, 0);
   }
 }
+
+/* Accesibilidad y estabilidad visual: respetar usuarios que reducen movimiento. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -222,13 +222,13 @@ export function ContactSection({ lang }: ContactSectionProps) {
   function buildMailto() {
     const subject =
       lang === "es"
-        ? "Nuevo perfil de cliente desde julissalewis.com"
-        : "New client profile from julissalewis.com";
+        ? "Nuevo perfil de cliente desde jjlindependentaccounting.com"
+        : "New client profile from jjlindependentaccounting.com";
 
     const body =
       lang === "es"
-        ? `Hola equipo JJL Independent Accounting,\n\nSe completó un nuevo perfil desde el sitio web.\n\nDatos de contacto:\nNombre completo: ${form.nombre}\nEmpresa: ${form.empresa}\nCorreo corporativo: ${form.email}\nWhatsApp: ${form.whatsapp}\n\nTipo de estructura comercial:\n${form.estructura}\n\nVolumen transaccional estimado:\n${form.volumen}\n\nPersonal y planilla local en Panamá:\n${form.planilla}\n\nServicios especializados requeridos:\n${form.especializados.length ? form.especializados.map((item) => `- ${item}`).join("\n") : "No especificado"}\n\n--\nEnviado desde julissalewis.com`
-        : `Hello JJL Independent Accounting team,\n\nA new profile was completed from the website.\n\nContact information:\nFull name: ${form.nombre}\nCompany: ${form.empresa}\nCorporate email: ${form.email}\nWhatsApp: ${form.whatsapp}\n\nCommercial structure type:\n${form.estructura}\n\nEstimated transaction volume:\n${form.volumen}\n\nLocal staff and payroll in Panama:\n${form.planilla}\n\nSpecialized services required:\n${form.especializados.length ? form.especializados.map((item) => `- ${item}`).join("\n") : "Not specified"}\n\n--\nSent from julissalewis.com`;
+        ? `Hola equipo JJL Independent Accounting,\n\nSe completó un nuevo perfil desde el sitio web.\n\nDatos de contacto:\nNombre completo: ${form.nombre}\nEmpresa: ${form.empresa}\nCorreo corporativo: ${form.email}\nWhatsApp: ${form.whatsapp}\n\nTipo de estructura comercial:\n${form.estructura}\n\nVolumen transaccional estimado:\n${form.volumen}\n\nPersonal y planilla local en Panamá:\n${form.planilla}\n\nServicios especializados requeridos:\n${form.especializados.length ? form.especializados.map((item) => `- ${item}`).join("\n") : "No especificado"}\n\n--\nEnviado desde jjlindependentaccounting.com`
+        : `Hello JJL Independent Accounting team,\n\nA new profile was completed from the website.\n\nContact information:\nFull name: ${form.nombre}\nCompany: ${form.empresa}\nCorporate email: ${form.email}\nWhatsApp: ${form.whatsapp}\n\nCommercial structure type:\n${form.estructura}\n\nEstimated transaction volume:\n${form.volumen}\n\nLocal staff and payroll in Panama:\n${form.planilla}\n\nSpecialized services required:\n${form.especializados.length ? form.especializados.map((item) => `- ${item}`).join("\n") : "Not specified"}\n\n--\nSent from jjlindependentaccounting.com`;
 
     return `mailto:${EMAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }

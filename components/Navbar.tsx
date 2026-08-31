@@ -4,12 +4,11 @@ type Lang = "es" | "en";
 
 interface NavbarProps {
   lang: Lang;
-  toggleLang: () => void;
 }
 
 const TRANSLATION_URL = "https://euridesyoung.com/";
 
-export function Navbar({ lang, toggleLang }: NavbarProps) {
+export function Navbar({ lang }: NavbarProps) {
   const labels =
     lang === "es"
       ? {
@@ -29,15 +28,21 @@ export function Navbar({ lang, toggleLang }: NavbarProps) {
           ctaMobile: "Quote"
         };
 
+  const alternateLang = lang === "es" ? "en" : "es";
+
   return (
     <header className="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-gray-100 animate-fade-in">
       <div className="section-container py-3">
         <div className="flex items-center justify-between gap-3">
-          <a href="#" className="flex items-center gap-3 min-w-0" aria-label="Julissa Lewis">
+          <a
+            href={`/${lang}`}
+            className="flex items-center gap-3 min-w-0"
+            aria-label="JJL Independent Accounting"
+          >
             <div className="relative h-11 w-32 sm:h-16 sm:w-64 shrink-0">
               <Image
                 src="/images/logo-julissa-lewis.png"
-                alt="Logo Julissa Lewis"
+                alt="JJL Independent Accounting"
                 fill
                 className="object-contain"
                 sizes="(min-width: 640px) 256px, 128px"
@@ -57,7 +62,7 @@ export function Navbar({ lang, toggleLang }: NavbarProps) {
             </div>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-5 text-sm">
+          <nav className="hidden lg:flex items-center gap-5 text-sm" aria-label={lang === "es" ? "Navegación principal" : "Main navigation"}>
             <a
               href="#sobre-mi"
               className="text-brandNavy/80 hover:text-brandNavy transition-colors"
@@ -88,14 +93,14 @@ export function Navbar({ lang, toggleLang }: NavbarProps) {
           </nav>
 
           <div className="flex items-center gap-2 shrink-0">
-            <button
-              type="button"
-              onClick={toggleLang}
-              className="h-10 min-w-10 rounded-full border border-brandNavy/15 bg-white text-xs font-bold text-brandNavy shadow-sm hover:bg-brandNavy hover:text-white transition"
+            <a
+              href={`/${alternateLang}`}
+              hrefLang={alternateLang}
+              className="h-10 min-w-10 inline-flex items-center justify-center rounded-full border border-brandNavy/15 bg-white text-xs font-bold text-brandNavy shadow-sm hover:bg-brandNavy hover:text-white transition"
               aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}
             >
               {lang === "es" ? "EN" : "ES"}
-            </button>
+            </a>
 
             <a
               href="#contacto"

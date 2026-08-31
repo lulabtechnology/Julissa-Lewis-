@@ -64,7 +64,7 @@ function renderHtml(payload: EmailPayload) {
 
   return `
     <div style="font-family: Arial, sans-serif; color: #0A2540; line-height: 1.5;">
-      <h2 style="margin: 0 0 16px;">Nuevo perfil de cliente desde julissalewis.com</h2>
+      <h2 style="margin: 0 0 16px;">Nuevo perfil de cliente desde jjlindependentaccounting.com</h2>
       <p>Se completó un nuevo cuestionario de perfilamiento para JJL Independent Accounting.</p>
       <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
         ${rows
@@ -139,13 +139,13 @@ export async function POST(request: Request) {
       }
     });
 
-    const text = `Nuevo perfil de cliente desde julissalewis.com\n\nDatos de contacto:\nNombre completo: ${requiredPayload.nombre}\nEmpresa: ${requiredPayload.empresa}\nCorreo corporativo: ${requiredPayload.email}\nWhatsApp: ${requiredPayload.whatsapp}\n\nTipo de estructura comercial:\n${requiredPayload.estructura}\n\nVolumen transaccional estimado:\n${requiredPayload.volumen}\n\nPersonal y planilla local en Panamá:\n${requiredPayload.planilla}\n\nServicios especializados requeridos:\n${renderList(requiredPayload.especializados)}\n\n--\nEnviado automáticamente desde julissalewis.com`;
+    const text = `Nuevo perfil de cliente desde jjlindependentaccounting.com\n\nDatos de contacto:\nNombre completo: ${requiredPayload.nombre}\nEmpresa: ${requiredPayload.empresa}\nCorreo corporativo: ${requiredPayload.email}\nWhatsApp: ${requiredPayload.whatsapp}\n\nTipo de estructura comercial:\n${requiredPayload.estructura}\n\nVolumen transaccional estimado:\n${requiredPayload.volumen}\n\nPersonal y planilla local en Panamá:\n${requiredPayload.planilla}\n\nServicios especializados requeridos:\n${renderList(requiredPayload.especializados)}\n\n--\nEnviado automáticamente desde jjlindependentaccounting.com`;
 
     await transporter.sendMail({
       from: smtpFrom,
       to: MAIL_TO,
       replyTo: requiredPayload.email,
-      subject: "Nuevo perfil de cliente desde julissalewis.com",
+      subject: "Nuevo perfil de cliente desde jjlindependentaccounting.com",
       text,
       html: renderHtml(requiredPayload)
     });
