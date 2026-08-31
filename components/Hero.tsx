@@ -1,3 +1,4 @@
+import { serviceSlug } from "@/lib/phase3-content";
 import Image from "next/image";
 
 type Lang = "es" | "en";
@@ -74,10 +75,10 @@ export function Hero({ lang }: HeroProps) {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <a href={lang === "es" ? "#multinacionales-sem" : "#multinationals-sem"} className="btn-primary">
+            <a href={`/${lang}/${serviceSlug(lang, "sem")}`} className="btn-primary">
               {t.primaryCta}
             </a>
-            <a href="#payroll-panama" className="btn-outline bg-white/5">
+            <a href={`/${lang}/${serviceSlug(lang, "payroll")}`} className="btn-outline bg-white/5">
               {t.secondaryCta}
             </a>
           </div>

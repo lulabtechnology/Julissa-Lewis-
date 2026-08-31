@@ -1,28 +1,32 @@
 import Image from "next/image";
+import { resourceHubSlug, serviceSlug } from "@/lib/phase3-content";
 
 type Lang = "es" | "en";
 
 interface NavbarProps {
   lang: Lang;
+  alternateHref?: string;
 }
 
 const TRANSLATION_URL = "https://euridesyoung.com/";
 
-export function Navbar({ lang }: NavbarProps) {
+export function Navbar({ lang, alternateHref }: NavbarProps) {
   const labels =
     lang === "es"
       ? {
-          specialties: "Especialidades",
+          sem: "SEM & Multinacionales",
+          payroll: "Payroll",
+          resources: "Recursos",
           about: "Equipo",
-          services: "Soluciones",
           translation: "Traducciones oficiales",
           cta: "Evaluar mi empresa",
           ctaMobile: "Cotizar"
         }
       : {
-          specialties: "Specialties",
+          sem: "SEM & Multinationals",
+          payroll: "Payroll",
+          resources: "Resources",
           about: "Team",
-          services: "Solutions",
           translation: "Official translations",
           cta: "Evaluate my company",
           ctaMobile: "Quote"
@@ -31,15 +35,15 @@ export function Navbar({ lang }: NavbarProps) {
   const alternateLang = lang === "es" ? "en" : "es";
 
   return (
-    <header className="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-gray-100 animate-fade-in">
+    <header className="sticky top-0 z-30 border-b border-gray-100 bg-white/95 backdrop-blur animate-fade-in">
       <div className="section-container py-3">
         <div className="flex items-center justify-between gap-3">
           <a
             href={`/${lang}`}
-            className="flex items-center gap-3 min-w-0"
+            className="flex min-w-0 items-center gap-3"
             aria-label="JJL Independent Accounting"
           >
-            <div className="relative h-11 w-32 sm:h-16 sm:w-64 shrink-0">
+            <div className="relative h-11 w-32 shrink-0 sm:h-16 sm:w-64">
               <Image
                 src="/images/logo-julissa-lewis.png"
                 alt="JJL Independent Accounting"
@@ -52,62 +56,67 @@ export function Navbar({ lang }: NavbarProps) {
 
             <div className="hidden sm:flex flex-col">
               <span className="text-[10px] uppercase tracking-[0.18em] text-brandGray">
-                {lang === "es" ? "Accounting • Payroll • SEM" : "Accounting • Payroll • SEM"}
+                Accounting • Payroll • SEM
               </span>
               <span className="text-sm font-semibold text-brandNavy">Julissa Lewis, CPA</span>
             </div>
           </a>
 
           <nav
-            className="hidden lg:flex items-center gap-5 text-sm"
+            className="hidden xl:flex items-center gap-5 text-sm"
             aria-label={lang === "es" ? "Navegación principal" : "Main navigation"}
           >
-            <a href="#especialidades" className="text-brandNavy/80 hover:text-brandNavy transition-colors">
-              {labels.specialties}
+            <a href={`/${lang}/${serviceSlug(lang, "sem")}`} className="text-brandNavy/80 transition-colors hover:text-brandNavy">
+              {labels.sem}
             </a>
-            <a href="#sobre-mi" className="text-brandNavy/80 hover:text-brandNavy transition-colors">
+            <a href={`/${lang}/${serviceSlug(lang, "payroll")}`} className="text-brandNavy/80 transition-colors hover:text-brandNavy">
+              {labels.payroll}
+            </a>
+            <a href={`/${lang}/${resourceHubSlug(lang)}`} className="text-brandNavy/80 transition-colors hover:text-brandNavy">
+              {labels.resources}
+            </a>
+            <a href={`/${lang}#sobre-mi`} className="text-brandNavy/80 transition-colors hover:text-brandNavy">
               {labels.about}
-            </a>
-            <a href="#servicios" className="text-brandNavy/80 hover:text-brandNavy transition-colors">
-              {labels.services}
             </a>
             <a
               href={TRANSLATION_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-brandTurquoise font-semibold hover:text-brandBlue transition-colors"
+              className="inline-flex items-center gap-1 font-semibold text-brandTurquoise transition-colors hover:text-brandBlue"
             >
               {labels.translation}
               <span aria-hidden="true">↗</span>
             </a>
           </nav>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex shrink-0 items-center gap-2">
             <a
-              href={`/${alternateLang}`}
+              href={alternateHref ?? `/${alternateLang}`}
               hrefLang={alternateLang}
-              className="h-10 min-w-10 inline-flex items-center justify-center rounded-full border border-brandNavy/15 bg-white text-xs font-bold text-brandNavy shadow-sm hover:bg-brandNavy hover:text-white transition"
+              className="inline-flex h-10 min-w-10 items-center justify-center rounded-full border border-brandNavy/20 bg-white text-xs font-bold text-brandNavy shadow-sm transition hover:bg-brandNavy hover:text-white"
               aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}
             >
               {lang === "es" ? "EN" : "ES"}
             </a>
 
-            <a href="#contacto" className="btn-primary h-10 px-3 text-xs sm:px-4 sm:text-sm">
+            <a href={`/${lang}#contacto`} className="btn-primary h-10 px-3 text-xs sm:px-4 sm:text-sm">
               <span className="hidden sm:inline">{labels.cta}</span>
               <span className="sm:hidden">{labels.ctaMobile}</span>
             </a>
           </div>
         </div>
 
-        <a
-          href={TRANSLATION_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 flex lg:hidden w-full items-center justify-center gap-1 rounded-full border border-brandTurquoise/40 bg-brandTurquoise/10 px-4 py-2 text-xs font-semibold text-brandTurquoise hover:bg-brandTurquoise hover:text-white transition"
-        >
-          {labels.translation}
-          <span aria-hidden="true">↗</span>
-        </a>
+        <div className="mt-3 grid grid-cols-3 gap-2 xl:hidden">
+          <a href={`/${lang}/${serviceSlug(lang, "sem")}`} className="rounded-full border border-brandNavy/10 bg-[#F7FAFC] px-3 py-2 text-center text-[11px] font-semibold text-brandNavy">
+            SEM
+          </a>
+          <a href={`/${lang}/${serviceSlug(lang, "payroll")}`} className="rounded-full border border-brandNavy/10 bg-[#F7FAFC] px-3 py-2 text-center text-[11px] font-semibold text-brandNavy">
+            Payroll
+          </a>
+          <a href={`/${lang}/${resourceHubSlug(lang)}`} className="rounded-full border border-brandNavy/10 bg-[#F7FAFC] px-3 py-2 text-center text-[11px] font-semibold text-brandNavy">
+            {labels.resources}
+          </a>
+        </div>
       </div>
     </header>
   );

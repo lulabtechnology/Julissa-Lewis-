@@ -1,3 +1,4 @@
+import { serviceSlug } from "@/lib/phase3-content";
 import Image from "next/image";
 
 type Lang = "es" | "en";
@@ -28,7 +29,7 @@ const content = {
           "Acompañamiento para estructuras SEM y operaciones internacionales"
         ],
         image: "/images/service-accounting.jpg",
-        cta: "Quiero evaluar mi operación"
+        cta: "Explorar Multinacionales & SEM"
       },
       {
         id: "payroll-panama",
@@ -45,7 +46,7 @@ const content = {
           "Control de prestaciones y soporte administrativo laboral"
         ],
         image: "/images/service-payroll.jpg",
-        cta: "Quiero cotizar payroll"
+        cta: "Explorar Payroll"
       }
     ]
   },
@@ -70,7 +71,7 @@ const content = {
           "Support for SEM structures and international operations"
         ],
         image: "/images/service-accounting.jpg",
-        cta: "Evaluate my operation"
+        cta: "Explore Multinationals & SEM"
       },
       {
         id: "payroll-panama",
@@ -87,7 +88,7 @@ const content = {
           "Statutory benefit control and labor administration support"
         ],
         image: "/images/service-payroll.jpg",
-        cta: "Request payroll quote"
+        cta: "Explore Payroll"
       }
     ]
   }
@@ -98,7 +99,7 @@ export function PriorityServices({ lang }: PriorityServicesProps) {
 
   return (
     <section id="especialidades" className="bg-white py-14 sm:py-16 lg:py-20">
-      <div className="section-container space-y-10 animate-fade-up">
+      <div className="section-container space-y-10 animate-fade-up" data-gsap-reveal>
         <div className="max-w-4xl space-y-4">
           <span className="badge-pill">{t.badge}</span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-brandNavy leading-tight">
@@ -109,7 +110,7 @@ export function PriorityServices({ lang }: PriorityServicesProps) {
           </p>
         </div>
 
-        <div className="grid gap-7 lg:grid-cols-2">
+        <div className="grid gap-7 lg:grid-cols-2" data-gsap-stagger>
           {t.services.map((service) => (
             <article
               id={service.id}
@@ -160,9 +161,14 @@ export function PriorityServices({ lang }: PriorityServicesProps) {
                   ))}
                 </ul>
 
-                <a href="#contacto" className="btn-primary mt-7 w-full sm:w-auto self-start">
-                  {service.cta}
-                </a>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <a href={`/${lang}/${serviceSlug(lang, service.id.includes("payroll") ? "payroll" : "sem")}`} className="btn-primary w-full sm:w-auto">
+                    {service.cta}
+                  </a>
+                  <a href={`/${lang}#contacto`} className="btn-outline w-full sm:w-auto">
+                    {lang === "es" ? "Hablar con JJL" : "Talk to JJL"}
+                  </a>
+                </div>
               </div>
             </article>
           ))}

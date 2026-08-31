@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
+import { GSAPExperience } from "@/components/GSAPExperience";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -49,7 +50,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <GSAPExperience />
+        {children}
+      </body>
     </html>
   );
 }

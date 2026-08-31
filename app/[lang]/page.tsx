@@ -8,6 +8,8 @@ import { Services } from "@/components/Services";
 import { ContactSection } from "@/components/ContactSection";
 import { IntegrityQuote } from "@/components/IntegrityQuote";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { FeaturedResources } from "@/components/FeaturedResources";
+import { serviceSlug } from "@/lib/phase3-content";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE,
@@ -170,7 +172,7 @@ function jsonLd(lang: Lang) {
           : "Multinational and SEM accounting",
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed: { "@type": "Country", name: "Panama" },
-        url: `${pageUrl}#${isSpanish ? "multinacionales-sem" : "multinationals-sem"}`
+        url: absoluteUrl(`/${lang}/${serviceSlug(lang, "sem")}`)
       },
       {
         "@type": "Service",
@@ -183,7 +185,7 @@ function jsonLd(lang: Lang) {
           : "Payroll outsourcing and labor compliance",
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed: { "@type": "Country", name: "Panama" },
-        url: `${pageUrl}#payroll-panama`
+        url: absoluteUrl(`/${lang}/${serviceSlug(lang, "payroll")}`)
       },
       {
         "@type": "Person",
@@ -266,6 +268,7 @@ export default function LocalizedHomePage({ params }: PageProps) {
         <About lang={lang} />
         <IntegrityQuote lang={lang} />
         <Services lang={lang} />
+        <FeaturedResources lang={lang} />
         <ContactSection lang={lang} />
         <WhatsAppFloat lang={lang} />
 
