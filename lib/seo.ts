@@ -16,16 +16,16 @@ export function isLang(value: string): value is Lang {
 
 export const SEO = {
   es: {
-    title: "JJL Independent Accounting | Servicios contables digitales en Panamá",
+    title: "Contabilidad para Multinacionales, SEM y Payroll en Panamá | JJL",
     description:
-      "Servicios contables digitales, gestión financiera estratégica, nómina, cumplimiento fiscal y soporte para empresas locales, multinacionales y operaciones de fuente extranjera en Panamá.",
+      "Contabilidad para multinacionales y empresas SEM, outsourcing de planilla, SIPE y cumplimiento laboral en Panamá con JJL Independent Accounting.",
     ogLocale: "es_PA",
     ogLocaleAlternate: "en_US"
   },
   en: {
-    title: "JJL Independent Accounting | Accounting Services in Panama",
+    title: "Multinational Accounting & Payroll Services in Panama | JJL",
     description:
-      "Digital accounting, strategic financial management, payroll and tax compliance support for local companies, multinational operations and foreign-source structures in Panama.",
+      "Accounting for multinationals and SEM companies in Panama, plus payroll outsourcing, SIPE and labor-compliance support from JJL Independent Accounting.",
     ogLocale: "en_US",
     ogLocaleAlternate: "es_PA"
   }

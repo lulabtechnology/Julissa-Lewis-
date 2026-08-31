@@ -7,8 +7,8 @@ interface WhatsAppFloatProps {
 export function WhatsAppFloat({ lang }: WhatsAppFloatProps) {
   const message =
     lang === "es"
-      ? "Hola, deseo recibir información sobre los servicios de JJL Independent Accounting."
-      : "Hello, I would like to receive information about JJL Independent Accounting services.";
+      ? "Hola, deseo información sobre los servicios de JJL para Multinacionales/SEM o Payroll en Panamá."
+      : "Hello, I would like information about JJL services for Multinationals/SEM or Payroll in Panama.";
 
   return (
     <a

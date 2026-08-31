@@ -6,49 +6,45 @@ interface HeroProps {
   lang: Lang;
 }
 
-const TRANSLATION_URL = "https://euridesyoung.com/";
-
 const content = {
   es: {
-    badge: "Firma contable digital en Panamá",
-    titleMain: "Servicios contables digitales",
-    titleHighlight: "y gestión financiera estratégica.",
+    badge: "Contabilidad especializada para empresas en Panamá",
+    titleMain: "Control financiero para empresas",
+    titleHighlight: "que operan y crecen en Panamá.",
     paragraph:
-      "Modernizamos la contabilidad de su negocio utilizando sistemas avanzados en la nube y automatización de registros. Ofrecemos soluciones integrales en finanzas, nómina y cumplimiento fiscal, diseñadas especialmente para empresas locales, operaciones de fuente extranjera y Empresas bajo el régimen SEM en Panamá.",
-    primaryCta: "Cotizar solución a la medida",
-    secondaryCta: "Ver perfil en LinkedIn",
-    translationCta: "Traducciones oficiales",
+      "JJL Independent Accounting combina experiencia corporativa, contabilidad digital y conocimiento local para acompañar a multinacionales, empresas SEM y organizaciones que necesitan externalizar su planilla y cumplimiento laboral.",
+    primaryCta: "Multinacionales & SEM",
+    secondaryCta: "Payroll & cumplimiento",
     cardEyebrow: "JJL Independent Accounting",
-    cardTitle: "Contabilidad clara, digital y estratégica",
+    cardTitle: "Dos especialidades. Una visión integral del negocio.",
     cardText:
-      "Perfilamos la estructura de su organización para recomendar el nivel de soporte contable, fiscal, financiero y de planilla que realmente necesita.",
-    sendInquiry: "Completar cuestionario",
+      "Primero entendemos cómo opera su empresa. Después definimos el nivel de soporte contable, financiero y de planilla que realmente necesita.",
+    sendInquiry: "Evaluar mi empresa",
     stats: [
       { label1: "+15 años", label2: "de experiencia corporativa" },
-      { label1: "DGI", label2: "cumplimiento fiscal local" },
       { label1: "SEM", label2: "operaciones multinacionales" },
-      { label1: "Nube", label2: "gestión digital segura" }
+      { label1: "SIPE", label2: "planilla y cumplimiento" },
+      { label1: "DGI", label2: "control fiscal local" }
     ]
   },
   en: {
-    badge: "Digital accounting firm in Panama",
-    titleMain: "Digital accounting services",
-    titleHighlight: "and strategic financial management.",
+    badge: "Specialized accounting for companies in Panama",
+    titleMain: "Financial control for companies",
+    titleHighlight: "operating and growing in Panama.",
     paragraph:
-      "We modernize your business accounting through advanced cloud-based systems and automated records. We provide integrated solutions in finance, payroll, and tax compliance, designed for local companies, foreign-source operations, and SEM regime companies in Panama.",
-    primaryCta: "Request a tailored proposal",
-    secondaryCta: "View LinkedIn profile",
-    translationCta: "Official translations",
+      "JJL Independent Accounting combines corporate experience, digital accounting, and local knowledge to support multinationals, SEM companies, and organizations that need to outsource payroll and labor-compliance operations.",
+    primaryCta: "Multinationals & SEM",
+    secondaryCta: "Payroll & compliance",
     cardEyebrow: "JJL Independent Accounting",
-    cardTitle: "Clear, digital, and strategic accounting",
+    cardTitle: "Two specialties. One integrated view of your business.",
     cardText:
-      "We profile your organization structure to recommend the right level of accounting, tax, financial, and payroll support.",
-    sendInquiry: "Complete questionnaire",
+      "We first understand how your company operates. Then we define the accounting, financial, and payroll support it actually needs.",
+    sendInquiry: "Evaluate my company",
     stats: [
       { label1: "15+ years", label2: "of corporate experience" },
-      { label1: "DGI", label2: "local tax compliance" },
       { label1: "SEM", label2: "multinational operations" },
-      { label1: "Cloud", label2: "secure digital management" }
+      { label1: "SIPE", label2: "payroll and compliance" },
+      { label1: "DGI", label2: "local tax control" }
     ]
   }
 } as const;
@@ -70,9 +66,7 @@ export function Hero({ lang }: HeroProps) {
           <div className="space-y-5">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
               {t.titleMain}
-              <span className="block text-brandLightBlue">
-                {t.titleHighlight}
-              </span>
+              <span className="block text-brandLightBlue">{t.titleHighlight}</span>
             </h1>
             <p className="text-sm sm:text-base text-white/85 max-w-2xl leading-relaxed">
               {t.paragraph}
@@ -80,33 +74,18 @@ export function Hero({ lang }: HeroProps) {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <a href="#contacto" className="btn-primary">
+            <a href={lang === "es" ? "#multinacionales-sem" : "#multinationals-sem"} className="btn-primary">
               {t.primaryCta}
             </a>
-            <a
-              href="https://www.linkedin.com/in/julissa-lewis-cpa-5a530b138?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline bg-white/5"
-            >
+            <a href="#payroll-panama" className="btn-outline bg-white/5">
               {t.secondaryCta}
-            </a>
-            <a
-              href={TRANSLATION_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline bg-white/5"
-            >
-              {t.translationCta}
             </a>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-white/80 pt-4">
             {t.stats.map((s) => (
               <div key={s.label1} className="rounded-2xl border border-white/10 bg-white/5 p-3">
-                <div className="text-base font-semibold text-white">
-                  {s.label1}
-                </div>
+                <div className="text-base font-semibold text-white">{s.label1}</div>
                 <div className="leading-snug">{s.label2}</div>
               </div>
             ))}

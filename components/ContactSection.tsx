@@ -13,6 +13,7 @@ type FormState = {
   empresa: string;
   email: string;
   whatsapp: string;
+  interes: string;
   estructura: string;
   volumen: string;
   planilla: string;
@@ -31,6 +32,7 @@ const initialState: FormState = {
   empresa: "",
   email: "",
   whatsapp: "",
+  interes: "",
   estructura: "",
   volumen: "",
   planilla: "",
@@ -53,6 +55,7 @@ const content = {
       "No se pudo enviar de forma automática. Abriremos su correo con el perfil listo para enviarlo a JJL Independent Accounting.",
     required: "Complete los campos requeridos para continuar.",
     contact: "Datos de contacto",
+    interest: "Servicio principal",
     structure: "Estructura comercial",
     operation: "Volumen y planilla",
     addons: "Servicios especializados",
@@ -68,6 +71,12 @@ const content = {
       email: "correo@empresa.com",
       whatsapp: "+507..."
     },
+    interesOptions: [
+      "Contabilidad y soporte para Multinacionales / Empresas SEM.",
+      "Outsourcing de Planilla / Payroll y cumplimiento laboral.",
+      "Necesitamos ambas áreas integradas.",
+      "Otra necesidad contable o financiera."
+    ],
     estructuraOptions: [
       "PYME Local / Operación Comercial Tradicional en Panamá.",
       "Sede de Empresa Multinacional (SEM).",
@@ -112,6 +121,7 @@ const content = {
       "Automatic delivery could not be completed. We will open your email app with the profile ready to send to JJL Independent Accounting.",
     required: "Please complete the required fields to continue.",
     contact: "Contact information",
+    interest: "Primary service",
     structure: "Commercial structure",
     operation: "Volume and payroll",
     addons: "Specialized services",
@@ -127,6 +137,12 @@ const content = {
       email: "email@company.com",
       whatsapp: "+507..."
     },
+    interesOptions: [
+      "Accounting and support for Multinationals / SEM Companies.",
+      "Payroll outsourcing and labor compliance.",
+      "We need both areas integrated.",
+      "Another accounting or financial need."
+    ],
     estructuraOptions: [
       "Local SME / Traditional commercial operation in Panama.",
       "Multinational company headquarters (SEM).",
@@ -167,8 +183,8 @@ export function ContactSection({ lang }: ContactSectionProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const steps = useMemo(
-    () => [t.contact, t.structure, t.operation, t.addons],
-    [t.contact, t.structure, t.operation, t.addons]
+    () => [t.contact, t.interest, t.structure, t.operation, t.addons],
+    [t.contact, t.interest, t.structure, t.operation, t.addons]
   );
 
   function updateField(field: keyof FormState, value: string) {
@@ -200,10 +216,14 @@ export function ContactSection({ lang }: ContactSectionProps) {
     }
 
     if (currentStep === 1) {
-      return Boolean(form.estructura);
+      return Boolean(form.interes);
     }
 
     if (currentStep === 2) {
+      return Boolean(form.estructura);
+    }
+
+    if (currentStep === 3) {
       return Boolean(form.volumen && form.planilla);
     }
 
@@ -227,8 +247,8 @@ export function ContactSection({ lang }: ContactSectionProps) {
 
     const body =
       lang === "es"
-        ? `Hola equipo JJL Independent Accounting,\n\nSe completó un nuevo perfil desde el sitio web.\n\nDatos de contacto:\nNombre completo: ${form.nombre}\nEmpresa: ${form.empresa}\nCorreo corporativo: ${form.email}\nWhatsApp: ${form.whatsapp}\n\nTipo de estructura comercial:\n${form.estructura}\n\nVolumen transaccional estimado:\n${form.volumen}\n\nPersonal y planilla local en Panamá:\n${form.planilla}\n\nServicios especializados requeridos:\n${form.especializados.length ? form.especializados.map((item) => `- ${item}`).join("\n") : "No especificado"}\n\n--\nEnviado desde jjlindependentaccounting.com`
-        : `Hello JJL Independent Accounting team,\n\nA new profile was completed from the website.\n\nContact information:\nFull name: ${form.nombre}\nCompany: ${form.empresa}\nCorporate email: ${form.email}\nWhatsApp: ${form.whatsapp}\n\nCommercial structure type:\n${form.estructura}\n\nEstimated transaction volume:\n${form.volumen}\n\nLocal staff and payroll in Panama:\n${form.planilla}\n\nSpecialized services required:\n${form.especializados.length ? form.especializados.map((item) => `- ${item}`).join("\n") : "Not specified"}\n\n--\nSent from jjlindependentaccounting.com`;
+        ? `Hola equipo JJL Independent Accounting,\n\nSe completó un nuevo perfil desde el sitio web.\n\nDatos de contacto:\nNombre completo: ${form.nombre}\nEmpresa: ${form.empresa}\nCorreo corporativo: ${form.email}\nWhatsApp: ${form.whatsapp}\n\nServicio principal de interés:\n${form.interes}\n\nTipo de estructura comercial:\n${form.estructura}\n\nVolumen transaccional estimado:\n${form.volumen}\n\nPersonal y planilla local en Panamá:\n${form.planilla}\n\nServicios especializados requeridos:\n${form.especializados.length ? form.especializados.map((item) => `- ${item}`).join("\n") : "No especificado"}\n\n--\nEnviado desde jjlindependentaccounting.com`
+        : `Hello JJL Independent Accounting team,\n\nA new profile was completed from the website.\n\nContact information:\nFull name: ${form.nombre}\nCompany: ${form.empresa}\nCorporate email: ${form.email}\nWhatsApp: ${form.whatsapp}\n\nPrimary service of interest:\n${form.interes}\n\nCommercial structure type:\n${form.estructura}\n\nEstimated transaction volume:\n${form.volumen}\n\nLocal staff and payroll in Panama:\n${form.planilla}\n\nSpecialized services required:\n${form.especializados.length ? form.especializados.map((item) => `- ${item}`).join("\n") : "Not specified"}\n\n--\nSent from jjlindependentaccounting.com`;
 
     return `mailto:${EMAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
@@ -236,7 +256,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const allValid = [0, 1, 2, 3].every((item) => validateStep(item));
+    const allValid = [0, 1, 2, 3, 4].every((item) => validateStep(item));
     if (!allValid) {
       setError(t.required);
       return;
@@ -382,6 +402,20 @@ export function ContactSection({ lang }: ContactSectionProps) {
             ) : null}
 
             {step === 1 ? (
+              <div>
+                <h3 className="text-sm font-semibold text-brandNavy mb-3">
+                  {lang === "es" ? "¿En qué área podemos ayudarle primero?" : "Which area should we help you with first?"}
+                </h3>
+                <RadioGroup
+                  name="interes"
+                  options={t.interesOptions}
+                  value={form.interes}
+                  onChange={(value) => updateField("interes", value)}
+                />
+              </div>
+            ) : null}
+
+            {step === 2 ? (
               <RadioGroup
                 name="estructura"
                 options={t.estructuraOptions}
@@ -390,7 +424,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
               />
             ) : null}
 
-            {step === 2 ? (
+            {step === 3 ? (
               <div className="grid gap-5 md:grid-cols-2">
                 <div>
                   <h3 className="text-sm font-semibold text-brandNavy mb-3">
@@ -417,7 +451,7 @@ export function ContactSection({ lang }: ContactSectionProps) {
               </div>
             ) : null}
 
-            {step === 3 ? (
+            {step === 4 ? (
               <div className="space-y-3">
                 {t.especializadosOptions.map((option) => (
                   <label

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
+import { PriorityServices } from "@/components/PriorityServices";
 import { Services } from "@/components/Services";
 import { ContactSection } from "@/components/ContactSection";
 import { IntegrityQuote } from "@/components/IntegrityQuote";
@@ -111,11 +112,12 @@ function jsonLd(lang: Lang) {
         knowsAbout: [
           "Accounting in Panama",
           "Tax compliance in Panama",
-          "Payroll in Panama",
+          "Accounting for SEM companies in Panama",
+          "Multinational accounting in Panama",
+          "Payroll outsourcing in Panama",
           "SIPE",
           "Caja de Seguro Social",
-          "SEM companies in Panama",
-          "Multinational accounting",
+          "Labor compliance in Panama",
           "Foreign-source operations"
         ],
         hasOfferCatalog: {
@@ -126,19 +128,22 @@ function jsonLd(lang: Lang) {
               "@type": "Offer",
               itemOffered: {
                 "@type": "Service",
+                "@id": `${SITE_URL}/#multinational-sem-accounting`,
+                "@type": "Service",
                 name: isSpanish
-                  ? "Servicios contables y cumplimiento fiscal"
-                  : "Accounting and tax compliance services",
+                  ? "Contabilidad y soporte financiero para multinacionales y empresas SEM"
+                  : "Accounting and financial support for multinationals and SEM companies",
                 areaServed: "Panama"
               }
             },
             {
               "@type": "Offer",
               itemOffered: {
+                "@id": `${SITE_URL}/#payroll-outsourcing`,
                 "@type": "Service",
                 name: isSpanish
-                  ? "Gestión de planilla y cumplimiento laboral"
-                  : "Payroll management and labor compliance",
+                  ? "Outsourcing de planilla, SIPE y cumplimiento laboral"
+                  : "Payroll outsourcing, SIPE and labor compliance",
                 areaServed: "Panama"
               }
             },
@@ -154,6 +159,32 @@ function jsonLd(lang: Lang) {
             }
           ]
         }
+      },
+      {
+        "@type": "Service",
+        "@id": `${SITE_URL}/#multinational-sem-accounting`,
+        name: isSpanish
+          ? "Contabilidad y soporte financiero para multinacionales y empresas SEM en Panamá"
+          : "Accounting and financial support for multinationals and SEM companies in Panama",
+        serviceType: isSpanish
+          ? "Contabilidad para multinacionales y empresas SEM"
+          : "Multinational and SEM accounting",
+        provider: { "@id": `${SITE_URL}/#organization` },
+        areaServed: { "@type": "Country", name: "Panama" },
+        url: `${pageUrl}#${isSpanish ? "multinacionales-sem" : "multinationals-sem"}`
+      },
+      {
+        "@type": "Service",
+        "@id": `${SITE_URL}/#payroll-outsourcing`,
+        name: isSpanish
+          ? "Outsourcing de planilla, SIPE y cumplimiento laboral en Panamá"
+          : "Payroll outsourcing, SIPE and labor compliance in Panama",
+        serviceType: isSpanish
+          ? "Outsourcing de planilla y cumplimiento laboral"
+          : "Payroll outsourcing and labor compliance",
+        provider: { "@id": `${SITE_URL}/#organization` },
+        areaServed: { "@type": "Country", name: "Panama" },
+        url: `${pageUrl}#payroll-panama`
       },
       {
         "@type": "Person",
@@ -208,6 +239,10 @@ function jsonLd(lang: Lang) {
         description: SEO[lang].description,
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#organization` },
+        mainEntity: [
+          { "@id": `${SITE_URL}/#multinational-sem-accounting` },
+          { "@id": `${SITE_URL}/#payroll-outsourcing` }
+        ],
         inLanguage: isSpanish ? "es-PA" : "en"
       }
     ]
@@ -228,6 +263,7 @@ export default function LocalizedHomePage({ params }: PageProps) {
       <main lang={lang === "es" ? "es-PA" : "en"} className="min-h-screen flex flex-col bg-[#F7FAFC]">
         <Navbar lang={lang} />
         <Hero lang={lang} />
+        <PriorityServices lang={lang} />
         <About lang={lang} />
         <IntegrityQuote lang={lang} />
         <Services lang={lang} />
@@ -237,7 +273,7 @@ export default function LocalizedHomePage({ params }: PageProps) {
         <footer className="border-t border-gray-100 bg-white/90">
           <div className="section-container py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-brandGray">
             <p>
-              © {new Date().getFullYear()} Julissa Lewis. {" "}
+              © {new Date().getFullYear()} JJL Independent Accounting. {" "}
               {lang === "es"
                 ? "Todos los derechos reservados."
                 : "All rights reserved."}

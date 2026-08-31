@@ -12,19 +12,19 @@ export function Navbar({ lang }: NavbarProps) {
   const labels =
     lang === "es"
       ? {
-          about: "Nuestro equipo",
-          services: "Planes",
-          contact: "Cotizar",
+          specialties: "Especialidades",
+          about: "Equipo",
+          services: "Soluciones",
           translation: "Traducciones oficiales",
-          cta: "Completar cuestionario",
+          cta: "Evaluar mi empresa",
           ctaMobile: "Cotizar"
         }
       : {
-          about: "Our team",
-          services: "Plans",
-          contact: "Quote",
+          specialties: "Specialties",
+          about: "Team",
+          services: "Solutions",
           translation: "Official translations",
-          cta: "Complete questionnaire",
+          cta: "Evaluate my company",
           ctaMobile: "Quote"
         };
 
@@ -52,34 +52,24 @@ export function Navbar({ lang }: NavbarProps) {
 
             <div className="hidden sm:flex flex-col">
               <span className="text-[10px] uppercase tracking-[0.18em] text-brandGray">
-                {lang === "es"
-                  ? "Contabilidad & Finanzas"
-                  : "Accounting & Finance"}
+                {lang === "es" ? "Accounting • Payroll • SEM" : "Accounting • Payroll • SEM"}
               </span>
-              <span className="text-sm font-semibold text-brandNavy">
-                Julissa Lewis, CPA
-              </span>
+              <span className="text-sm font-semibold text-brandNavy">Julissa Lewis, CPA</span>
             </div>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-5 text-sm" aria-label={lang === "es" ? "Navegación principal" : "Main navigation"}>
-            <a
-              href="#sobre-mi"
-              className="text-brandNavy/80 hover:text-brandNavy transition-colors"
-            >
+          <nav
+            className="hidden lg:flex items-center gap-5 text-sm"
+            aria-label={lang === "es" ? "Navegación principal" : "Main navigation"}
+          >
+            <a href="#especialidades" className="text-brandNavy/80 hover:text-brandNavy transition-colors">
+              {labels.specialties}
+            </a>
+            <a href="#sobre-mi" className="text-brandNavy/80 hover:text-brandNavy transition-colors">
               {labels.about}
             </a>
-            <a
-              href="#servicios"
-              className="text-brandNavy/80 hover:text-brandNavy transition-colors"
-            >
+            <a href="#servicios" className="text-brandNavy/80 hover:text-brandNavy transition-colors">
               {labels.services}
-            </a>
-            <a
-              href="#contacto"
-              className="text-brandNavy/80 hover:text-brandNavy transition-colors"
-            >
-              {labels.contact}
             </a>
             <a
               href={TRANSLATION_URL}
@@ -102,10 +92,7 @@ export function Navbar({ lang }: NavbarProps) {
               {lang === "es" ? "EN" : "ES"}
             </a>
 
-            <a
-              href="#contacto"
-              className="btn-primary h-10 px-3 text-xs sm:px-4 sm:text-sm"
-            >
+            <a href="#contacto" className="btn-primary h-10 px-3 text-xs sm:px-4 sm:text-sm">
               <span className="hidden sm:inline">{labels.cta}</span>
               <span className="sm:hidden">{labels.ctaMobile}</span>
             </a>

@@ -9,6 +9,7 @@ type ProfilePayload = {
   empresa?: string;
   email?: string;
   whatsapp?: string;
+  interes?: string;
   estructura?: string;
   volumen?: string;
   planilla?: string;
@@ -21,6 +22,7 @@ type EmailPayload = {
   empresa: string;
   email: string;
   whatsapp: string;
+  interes: string;
   estructura: string;
   volumen: string;
   planilla: string;
@@ -56,6 +58,7 @@ function renderHtml(payload: EmailPayload) {
     ["Empresa", payload.empresa],
     ["Correo corporativo", payload.email],
     ["WhatsApp", payload.whatsapp],
+    ["Servicio principal de interés", payload.interes],
     ["Tipo de estructura comercial", payload.estructura],
     ["Volumen transaccional estimado", payload.volumen],
     ["Personal y planilla local en Panamá", payload.planilla],
@@ -93,6 +96,7 @@ export async function POST(request: Request) {
       empresa: clean(payload.empresa),
       email: clean(payload.email),
       whatsapp: clean(payload.whatsapp),
+      interes: clean(payload.interes),
       estructura: clean(payload.estructura),
       volumen: clean(payload.volumen),
       planilla: clean(payload.planilla),
@@ -106,6 +110,7 @@ export async function POST(request: Request) {
       !requiredPayload.empresa ||
       !requiredPayload.email ||
       !requiredPayload.whatsapp ||
+      !requiredPayload.interes ||
       !requiredPayload.estructura ||
       !requiredPayload.volumen ||
       !requiredPayload.planilla
@@ -139,7 +144,7 @@ export async function POST(request: Request) {
       }
     });
 
-    const text = `Nuevo perfil de cliente desde jjlindependentaccounting.com\n\nDatos de contacto:\nNombre completo: ${requiredPayload.nombre}\nEmpresa: ${requiredPayload.empresa}\nCorreo corporativo: ${requiredPayload.email}\nWhatsApp: ${requiredPayload.whatsapp}\n\nTipo de estructura comercial:\n${requiredPayload.estructura}\n\nVolumen transaccional estimado:\n${requiredPayload.volumen}\n\nPersonal y planilla local en Panamá:\n${requiredPayload.planilla}\n\nServicios especializados requeridos:\n${renderList(requiredPayload.especializados)}\n\n--\nEnviado automáticamente desde jjlindependentaccounting.com`;
+    const text = `Nuevo perfil de cliente desde jjlindependentaccounting.com\n\nDatos de contacto:\nNombre completo: ${requiredPayload.nombre}\nEmpresa: ${requiredPayload.empresa}\nCorreo corporativo: ${requiredPayload.email}\nWhatsApp: ${requiredPayload.whatsapp}\n\nServicio principal de interés:\n${requiredPayload.interes}\n\nTipo de estructura comercial:\n${requiredPayload.estructura}\n\nVolumen transaccional estimado:\n${requiredPayload.volumen}\n\nPersonal y planilla local en Panamá:\n${requiredPayload.planilla}\n\nServicios especializados requeridos:\n${renderList(requiredPayload.especializados)}\n\n--\nEnviado automáticamente desde jjlindependentaccounting.com`;
 
     await transporter.sendMail({
       from: smtpFrom,

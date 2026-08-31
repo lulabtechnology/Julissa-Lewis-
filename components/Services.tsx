@@ -8,115 +8,115 @@ const TRANSLATION_URL = "https://euridesyoung.com/";
 
 const content = {
   es: {
-    badge: "Planes y soluciones",
-    title: "Servicios estructurados por nivel de control y crecimiento.",
+    badge: "Soporte complementario",
+    title: "La contabilidad, el control financiero y la operación que sostienen nuestras dos especialidades.",
     intro:
-      "Reemplazamos paquetes genéricos por planes conceptuales que se adaptan al volumen, etapa y nivel de dirección financiera que su empresa necesita.",
+      "Además de Multinacionales & SEM y Payroll, estructuramos el soporte operativo que cada empresa necesita según su volumen, complejidad y nivel de control interno.",
     infrastructureTitle: "Infraestructura contable digital",
     infrastructureText:
-      "Implementamos sistemas de contabilidad digital y gestión financiera en la nube con encriptación bancaria. Integramos plataformas autorizadas por los PAC para la facturación electrónica y un modelo avanzado de digitalización documental con Inteligencia Artificial, garantizando el registro automático de comprobantes y el resguardo seguro de archivos en la nube hasta por 10 años.",
+      "Implementamos contabilidad y gestión financiera en la nube, conciliaciones, facturación electrónica, digitalización documental y controles que permiten trabajar con información más ordenada, trazable y disponible para la toma de decisiones.",
     plans: [
       {
-        name: "Plan Esencial",
-        subtitle: "Soporte Operativo & Cumplimiento",
+        name: "Contabilidad & Cumplimiento",
+        subtitle: "Base operativa local",
         description:
-          "Diseñado para empresas que requieren establecer una base sólida de cumplimiento fiscal local y regularización ante la DGI. Incluye monitoreo de facturación electrónica, conciliación automatizada en la nube y la preparación de la Declaración Jurada de Renta Anual. Ideal para clientes que autogestionan su registro diario y buscan supervisión CPA.",
-        tags: ["DGI", "Facturación electrónica", "Conciliación"]
+          "Contabilidad recurrente, conciliaciones, soporte de facturación electrónica, preparación de información financiera y control de obligaciones locales ante la DGI.",
+        tags: ["DGI", "Conciliaciones", "Facturación"]
       },
       {
-        name: "Plan Integral",
-        subtitle: "Control Operativo & Análisis Trimestral",
+        name: "Reporting & Control",
+        subtitle: "Visibilidad financiera",
         description:
-          "Para negocios en crecimiento que exigen visibilidad periódica de su salud financiera. Suma al plan esencial la entrega trimestral de Estados Financieros analíticos (P&L y Balance) junto con un análisis de variaciones operativas para la toma de decisiones.",
-        tags: ["P&L", "Balance", "Análisis trimestral"]
+          "Estados financieros periódicos, análisis de variaciones y reportes de gestión para empresas que necesitan entender mejor su operación y tomar decisiones con información clara.",
+        tags: ["P&L", "Balance", "Reporting"]
       },
       {
-        name: "Plan Corporativo",
-        subtitle: "Virtual Controller & Dirección Estratégica",
+        name: "Controller & Dirección Financiera",
+        subtitle: "Soporte senior",
         description:
-          "Nuestro servicio de más alto nivel para multinacionales, filiales o estructuras offshore. Dirección financiera senior con entrega mensual de reportes ejecutivos (Senior Reporting), diseño y control presupuestario, análisis de indicadores clave (KPIs), gestión multidivisa y juntas mensuales de revisión.",
-        tags: ["KPIs", "Senior reporting", "Multidivisa"]
+          "Presupuestos, KPIs, control financiero, gestión multidivisa y reuniones de revisión para organizaciones con mayor complejidad, filiales o estructuras internacionales.",
+        tags: ["KPIs", "Controller", "Multidivisa"]
       }
     ],
-    modulesBadge: "Complementos modulares",
-    modulesTitle: "Servicios llave en mano para completar la operación.",
+    modulesBadge: "Capacidades adicionales",
+    modulesTitle: "Servicios que pueden integrarse a la solución principal.",
     modules: [
-      {
-        title: "Módulo de Nómina",
-        text:
-          "Procesamiento y cálculo experto de planilla local (SIPE / Caja de Seguro Social), liquidaciones, décimo tercer mes y control de prestaciones de ley."
-      },
       {
         title: "Administración y Tesorería Corporativa",
         text:
-          "Servicio especializado para la gestión y dispersión de fondos, ACH, pago directo a proveedores y empleados desde la banca corporativa del cliente bajo estrictos protocolos de control interno."
+          "Gestión y dispersión de fondos, ACH y pagos a proveedores o empleados desde la banca corporativa del cliente, bajo protocolos de control interno."
+      },
+      {
+        title: "Acompañamiento Financiero Especializado",
+        text:
+          "Soporte para presupuestos, análisis puntuales, procesos de cierre, estructuración de reportes y proyectos financieros a la medida."
       },
       {
         title: "Alianza Legal Estratégica",
         text:
-          "Acompañamiento legal corporativo para la constitución de sociedades anónimas, registros comerciales avanzados, asesoría migratoria y auditoría de contratos laborales a través de nuestra alianza legal estratégica."
+          "Coordinación de soporte corporativo, migratorio y laboral a través de una alianza legal especializada cuando la operación lo requiere."
       },
       {
         title: "Traducciones Oficiales",
         text:
-          "Contacto directo para el servicio de Traducción Oficial Registrada ante el MIRE (Ministerio de Relaciones Exteriores).",
+          "Acceso directo al servicio de Traducción Oficial Registrada ante el MIRE para documentación corporativa y trámites.",
         cta: "Ir al servicio de traducción"
       }
     ]
   },
   en: {
-    badge: "Plans and solutions",
-    title: "Services structured by control level and business growth.",
+    badge: "Complementary support",
+    title: "The accounting, financial control, and operational support behind our two core specialties.",
     intro:
-      "We replace generic packages with conceptual plans that adapt to your company’s volume, stage, and financial direction needs.",
+      "Beyond Multinationals & SEM and Payroll, we structure the operational support each company needs according to volume, complexity, and internal-control requirements.",
     infrastructureTitle: "Digital accounting infrastructure",
     infrastructureText:
-      "We implement digital accounting and cloud-based financial management systems with bank-grade encryption. We integrate platforms authorized by PAC providers for electronic invoicing and an advanced document digitization model with Artificial Intelligence, ensuring automatic receipt registration and secure cloud file storage for up to 10 years.",
+      "We implement cloud accounting and financial management, reconciliations, electronic invoicing, document digitization, and controls that keep information organized, traceable, and available for decision-making.",
     plans: [
       {
-        name: "Essential Plan",
-        subtitle: "Operational Support & Compliance",
+        name: "Accounting & Compliance",
+        subtitle: "Local operational foundation",
         description:
-          "Designed for companies that need to establish a solid foundation for local tax compliance and DGI regularization. Includes electronic invoicing monitoring, automated cloud reconciliation, and preparation of the Annual Income Tax Return. Ideal for clients who self-manage daily records and need CPA supervision.",
-        tags: ["DGI", "Electronic invoicing", "Reconciliation"]
+          "Recurring accounting, reconciliations, electronic-invoicing support, financial-information preparation, and control of local DGI obligations.",
+        tags: ["DGI", "Reconciliations", "Invoicing"]
       },
       {
-        name: "Integral Plan",
-        subtitle: "Operational Control & Quarterly Analysis",
+        name: "Reporting & Control",
+        subtitle: "Financial visibility",
         description:
-          "For growing businesses that require periodic visibility into financial health. Adds quarterly analytical Financial Statements (P&L and Balance Sheet) to the essential plan, together with operational variance analysis for decision-making.",
-        tags: ["P&L", "Balance Sheet", "Quarterly analysis"]
+          "Periodic financial statements, variance analysis, and management reports for companies that need clearer visibility into operations and decision-making.",
+        tags: ["P&L", "Balance Sheet", "Reporting"]
       },
       {
-        name: "Corporate Plan",
-        subtitle: "Virtual Controller & Strategic Direction",
+        name: "Controller & Financial Direction",
+        subtitle: "Senior support",
         description:
-          "Our highest-level service for multinationals, subsidiaries, or offshore structures. Senior financial direction with monthly executive reports, budget design and control, key indicator analysis (KPIs), multi-currency management, and monthly review meetings.",
-        tags: ["KPIs", "Senior reporting", "Multi-currency"]
+          "Budgets, KPIs, financial control, multi-currency management, and review meetings for organizations with greater complexity, subsidiaries, or international structures.",
+        tags: ["KPIs", "Controller", "Multi-currency"]
       }
     ],
-    modulesBadge: "Modular add-ons",
-    modulesTitle: "Turnkey services to complete the operation.",
+    modulesBadge: "Additional capabilities",
+    modulesTitle: "Services that can be integrated into the primary solution.",
     modules: [
-      {
-        title: "Payroll Module",
-        text:
-          "Expert processing and calculation of local payroll (SIPE / Social Security Fund), terminations, thirteenth-month payment, and statutory benefit control."
-      },
       {
         title: "Corporate Administration and Treasury",
         text:
-          "Specialized service for fund management and disbursement, ACH, and direct payments to suppliers and employees from the client’s corporate banking under strict internal control protocols."
+          "Fund management and disbursement, ACH, and supplier or employee payments from the client’s corporate banking under internal-control protocols."
+      },
+      {
+        title: "Specialized Financial Support",
+        text:
+          "Support for budgets, ad-hoc analysis, closing processes, reporting structures, and tailored financial projects."
       },
       {
         title: "Strategic Legal Alliance",
         text:
-          "Corporate legal support for the incorporation of corporations, advanced commercial registrations, immigration advisory, and labor contract audits through our strategic legal alliance."
+          "Coordination of corporate, immigration, and labor support through a specialized legal alliance when the operation requires it."
       },
       {
         title: "Official Translations",
         text:
-          "Direct contact for Official Translation services registered before the MIRE (Ministry of Foreign Affairs).",
+          "Direct access to Official Translation services registered before MIRE for corporate documentation and procedures.",
         cta: "Go to translation service"
       }
     ]
@@ -132,7 +132,7 @@ export function Services({ lang }: ServicesProps) {
       className="bg-[#EDF2F7] border-y border-gray-100 py-14 sm:py-16 lg:py-20"
     >
       <div className="section-container space-y-12 animate-fade-up">
-        <div className="max-w-3xl space-y-3">
+        <div className="max-w-4xl space-y-3">
           <span className="badge-pill">{t.badge}</span>
           <h2 className="text-2xl sm:text-3xl font-semibold text-brandNavy">
             {t.title}
@@ -164,15 +164,9 @@ export function Services({ lang }: ServicesProps) {
               </div>
 
               <div className="space-y-2">
-                <h3 className="text-lg font-semibold text-brandNavy">
-                  {plan.name}
-                </h3>
-                <p className="text-sm font-medium text-brandBlue">
-                  {plan.subtitle}
-                </p>
-                <p className="text-sm text-brandGray leading-relaxed">
-                  {plan.description}
-                </p>
+                <h3 className="text-lg font-semibold text-brandNavy">{plan.name}</h3>
+                <p className="text-sm font-medium text-brandBlue">{plan.subtitle}</p>
+                <p className="text-sm text-brandGray leading-relaxed">{plan.description}</p>
               </div>
 
               <div className="mt-auto pt-5 flex flex-wrap gap-2">
@@ -200,21 +194,17 @@ export function Services({ lang }: ServicesProps) {
           <div className="grid gap-5 md:grid-cols-2">
             {t.modules.map((module) => (
               <article key={module.title} className="card p-6 sm:p-7 space-y-3">
-                <h3 className="text-base font-semibold text-brandNavy">
-                  {module.title}
-                </h3>
-                <p className="text-sm text-brandGray leading-relaxed">
-                  {module.text}
-                </p>
+                <h3 className="text-base font-semibold text-brandNavy">{module.title}</h3>
+                <p className="text-sm text-brandGray leading-relaxed">{module.text}</p>
                 {"cta" in module ? (
                   <a
                     href={TRANSLATION_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-outline mt-2 w-full sm:w-auto"
+                    className="inline-flex items-center gap-1 text-sm font-semibold text-brandTurquoise hover:text-brandBlue transition-colors"
                   >
                     {module.cta}
-                    <span aria-hidden="true" className="ml-1">↗</span>
+                    <span aria-hidden="true">↗</span>
                   </a>
                 ) : null}
               </article>
