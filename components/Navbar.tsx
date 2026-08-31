@@ -43,13 +43,13 @@ export function Navbar({ lang, alternateHref }: NavbarProps) {
             className="flex min-w-0 items-center"
             aria-label="JJL Independent Accounting"
           >
-            <div className="relative h-12 w-36 shrink-0 sm:h-16 sm:w-72">
+            <div className="relative h-14 w-24 shrink-0 sm:h-16 sm:w-28">
               <Image
-                src="/brand/jjl-logo.svg"
+                src="/brand/jjl-logo.png"
                 alt="JJL Independent Accounting"
                 fill
                 className="object-contain"
-                sizes="(min-width: 640px) 288px, 144px"
+                sizes="(min-width: 640px) 112px, 96px"
                 priority
               />
             </div>

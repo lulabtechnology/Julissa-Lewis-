@@ -14,8 +14,8 @@ export function NotFoundView() {
       <section className="relative min-h-screen">
         <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-brandNavy via-brandTurquoise to-brandBlue" />
         <div className="section-container flex min-h-screen flex-col items-center justify-center py-16 text-center">
-          <Link href={`/${lang}`} aria-label="JJL Independent Accounting" className="relative mb-8 h-20 w-[300px] max-w-full">
-            <Image src="/brand/jjl-logo.svg" alt="JJL Independent Accounting" fill className="object-contain" priority />
+          <Link href={`/${lang}`} aria-label="JJL Independent Accounting" className="relative mb-8 h-32 w-48 max-w-full sm:h-40 sm:w-56">
+            <Image src="/brand/jjl-logo.png" alt="JJL Independent Accounting" fill className="object-contain" priority />
           </Link>
           <p className="text-sm font-bold uppercase tracking-[0.28em] text-brandTurquoise">Error 404</p>
           <h1 className="mt-4 text-5xl font-semibold sm:text-7xl">{isSpanish ? "Página no encontrada" : "Page not found"}</h1>

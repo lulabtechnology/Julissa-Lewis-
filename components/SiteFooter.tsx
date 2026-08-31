@@ -14,7 +14,7 @@ export function SiteFooter({ lang }: { lang: Lang }) {
       <div className="section-container py-7">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-3 text-xs text-brandGray">
-            <div className="relative h-12 w-12 shrink-0"><Image src="/brand/jjl-mark.svg" alt="" fill className="object-contain" /></div>
+            <div className="relative h-16 w-24 shrink-0 sm:w-28"><Image src="/brand/jjl-logo.png" alt="JJL Independent Accounting" fill className="object-contain" sizes="112px" /></div>
             <div>
             <p>
               © {new Date().getFullYear()} JJL Independent Accounting. {isSpanish ? "Todos los derechos reservados." : "All rights reserved."}
