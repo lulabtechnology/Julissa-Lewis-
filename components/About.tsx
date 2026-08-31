@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { profilePath } from "@/lib/phase4-authority";
 
 type Lang = "es" | "en";
 
@@ -134,6 +136,10 @@ export function About({ lang }: AboutProps) {
                   ))}
                 </ul>
               </div>
+
+              <Link href={profilePath(lang, profile.name)} className="inline-flex text-sm font-semibold text-brandTurquoise hover:text-brandBlue">
+                {lang === "es" ? "Ver perfil profesional →" : "View professional profile →"}
+              </Link>
             </div>
           </article>
         ))}

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 import { getContentPages, RESOURCE_HUB_META } from "@/lib/phase3-content";
+import { getAuthorityEntries } from "@/lib/phase4-authority";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date("2026-08-31T00:00:00-05:00");
@@ -83,5 +84,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     } satisfies MetadataRoute.Sitemap[number];
   });
 
-  return [...home, ...hubs, ...content];
+  const authority = getAuthorityEntries().map((entry) => {
+    const alternateLang = entry.lang === "es" ? "en" : "es";
+    const canonical = `${SITE_URL}/${entry.lang}/${entry.section}/${entry.slug}`;
+    const alternate = `${SITE_URL}/${alternateLang}/${entry.alternateSection}/${entry.alternateSlug}`;
+
+    return {
+      url: canonical,
+      lastModified: entry.type === "profile" ? lastModified : new Date(`${entry.updated}T00:00:00-05:00`),
+      changeFrequency: entry.type === "profile" ? "monthly" : "monthly",
+      priority: entry.type === "profile" ? 0.82 : entry.type === "press" ? 0.74 : 0.68,
+      alternates: {
+        languages: {
+          "es-PA": entry.lang === "es" ? canonical : alternate,
+          en: entry.lang === "en" ? canonical : alternate
+        }
+      }
+    } satisfies MetadataRoute.Sitemap[number];
+  });
+
+  return [...home, ...hubs, ...content, ...authority];
 }

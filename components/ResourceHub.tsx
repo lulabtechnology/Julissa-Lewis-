@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getContentPages, RESOURCE_HUB_META, serviceSlug } from "@/lib/phase3-content";
 import type { Lang } from "@/lib/seo";
+import { editorialPath, methodologyPath, profilePath } from "@/lib/phase4-authority";
 
 export function ResourceHub({ lang }: { lang: Lang }) {
   const meta = RESOURCE_HUB_META[lang];
@@ -40,6 +41,28 @@ export function ResourceHub({ lang }: { lang: Lang }) {
 
         <ResourceCluster title={isSpanish ? "Multinacionales, SEM & operaciones internacionales" : "Multinationals, SEM & international operations"} pages={sem} />
         <ResourceCluster title={isSpanish ? "Payroll, SIPE & cumplimiento laboral" : "Payroll, SIPE & labor compliance"} pages={payroll} />
+
+        <section className="rounded-[2rem] border border-brandLightBlue/25 bg-white p-7 shadow-soft sm:p-9" data-gsap-reveal>
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center">
+            <div>
+              <span className="badge-pill">{isSpanish ? "Confianza & trazabilidad" : "Trust & traceability"}</span>
+              <h2 className="mt-4 text-2xl font-semibold text-brandNavy sm:text-3xl">
+                {isSpanish ? "Sepa quién firma cada tema y de dónde sale la información" : "Know who is responsible for each topic and where the information comes from"}
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-brandGray">
+                {isSpanish
+                  ? "Las guías de JJL conectan autor responsable, fecha de actualización y fuentes públicas. La metodología editorial evita claims no verificables y separa información general de asesoría individual."
+                  : "JJL guides connect a responsible author, update date, and public sources. The editorial methodology avoids unverifiable claims and separates general information from individualized advice."}
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2" data-gsap-stagger>
+              <Link href={profilePath(lang, "Julissa Lewis")} className="rounded-2xl border border-gray-100 bg-[#F7FAFC] p-4 text-sm font-semibold text-brandNavy hover:border-brandLightBlue/50">Julissa Lewis →</Link>
+              <Link href={profilePath(lang, "Jissbeth Lewis")} className="rounded-2xl border border-gray-100 bg-[#F7FAFC] p-4 text-sm font-semibold text-brandNavy hover:border-brandLightBlue/50">Jissbeth Lewis →</Link>
+              <Link href={editorialPath(lang)} className="rounded-2xl border border-gray-100 bg-[#F7FAFC] p-4 text-sm font-semibold text-brandNavy hover:border-brandLightBlue/50">{isSpanish ? "Política editorial →" : "Editorial policy →"}</Link>
+              <Link href={methodologyPath(lang)} className="rounded-2xl border border-gray-100 bg-[#F7FAFC] p-4 text-sm font-semibold text-brandNavy hover:border-brandLightBlue/50">{isSpanish ? "Metodología de fuentes →" : "Source methodology →"}</Link>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );

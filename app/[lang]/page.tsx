@@ -9,6 +9,8 @@ import { ContactSection } from "@/components/ContactSection";
 import { IntegrityQuote } from "@/components/IntegrityQuote";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { FeaturedResources } from "@/components/FeaturedResources";
+import { SiteFooter } from "@/components/SiteFooter";
+import { profilePath } from "@/lib/phase4-authority";
 import { serviceSlug } from "@/lib/phase3-content";
 import {
   CONTACT_EMAIL,
@@ -49,6 +51,9 @@ export function generateMetadata({ params }: PageProps): Metadata {
         "es-PA": "/es",
         "en": "/en",
         "x-default": "/es"
+      },
+      types: {
+        "application/rss+xml": `/${lang}/feed.xml`
       }
     },
     openGraph: {
@@ -195,7 +200,7 @@ function jsonLd(lang: Lang) {
           ? "Fundadora y Contadora Principal"
           : "Founder and Principal Accountant",
         worksFor: { "@id": `${SITE_URL}/#organization` },
-        url: `${pageUrl}#sobre-mi`,
+        url: absoluteUrl(profilePath(lang, "Julissa Lewis")),
         image: absoluteUrl("/images/julissa-lewis-new.jpg"),
         sameAs: [LINKEDIN_URL],
         knowsAbout: [
@@ -214,7 +219,7 @@ function jsonLd(lang: Lang) {
           ? "Co-Fundadora y Especialista en Administración y Planilla"
           : "Co-Founder and Administration and Payroll Specialist",
         worksFor: { "@id": `${SITE_URL}/#organization` },
-        url: `${pageUrl}#sobre-mi`,
+        url: absoluteUrl(profilePath(lang, "Jissbeth Lewis")),
         image: absoluteUrl("/images/jissbeth-lewis-payroll.jpg"),
         knowsAbout: [
           "Payroll processing",
@@ -272,27 +277,7 @@ export default function LocalizedHomePage({ params }: PageProps) {
         <ContactSection lang={lang} />
         <WhatsAppFloat lang={lang} />
 
-        <footer className="border-t border-gray-100 bg-white/90">
-          <div className="section-container py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-brandGray">
-            <p>
-              © {new Date().getFullYear()} JJL Independent Accounting. {" "}
-              {lang === "es"
-                ? "Todos los derechos reservados."
-                : "All rights reserved."}
-            </p>
-            <p>
-              {lang === "es" ? "Diseño web por" : "Web design by"} {" "}
-              <a
-                href="https://lulabtech.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-brandTurquoise"
-              >
-                LuLabTech
-              </a>
-            </p>
-          </div>
-        </footer>
+        <SiteFooter lang={lang} />
       </main>
     </>
   );

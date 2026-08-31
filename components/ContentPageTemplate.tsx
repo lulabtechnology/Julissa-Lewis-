@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ContentPage } from "@/lib/phase3-content";
 import { getRelatedPages, resourceHubSlug, serviceSlug } from "@/lib/phase3-content";
 import { PayrollCssCalculator } from "@/components/PayrollCssCalculator";
+import { editorialPath, methodologyPath, profilePath } from "@/lib/phase4-authority";
 
 type Props = {
   page: ContentPage;
@@ -11,6 +12,8 @@ export function ContentPageTemplate({ page }: Props) {
   const related = getRelatedPages(page);
   const isSpanish = page.lang === "es";
   const servicePath = `/${page.lang}/${serviceSlug(page.lang, page.cluster === "sem" ? "sem" : "payroll")}`;
+  const authorPath = page.author === "JJL Independent Accounting" ? `/${page.lang}` : profilePath(page.lang, page.author);
+  const updatedLabel = page.updated.split("-").reverse().join("/");
 
   return (
     <>
@@ -48,10 +51,18 @@ export function ContentPageTemplate({ page }: Props) {
             <p className="mt-5 max-w-3xl text-sm leading-relaxed text-white/80 sm:text-base">
               {page.summary}
             </p>
-            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-white/60">
-              <span>{isSpanish ? "Revisado por" : "Reviewed by"}: {page.author}</span>
-              <span>{isSpanish ? "Actualizado" : "Updated"}: 31/08/2026</span>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-white/65">
+              <span>
+                {page.kind === "article" ? (isSpanish ? "Por" : "By") : (isSpanish ? "Especialista responsable" : "Subject specialist")}: {" "}
+                <Link href={authorPath} className="font-semibold text-white underline decoration-white/30 underline-offset-4 hover:decoration-brandTurquoise">
+                  {page.author}
+                </Link>
+              </span>
+              <span>{isSpanish ? "Actualizado" : "Updated"}: {updatedLabel}</span>
               {page.readingTime ? <span>{page.readingTime}</span> : null}
+              <Link href={editorialPath(page.lang)} className="font-medium text-brandLightBlue hover:text-white">
+                {isSpanish ? "Estándares editoriales ↗" : "Editorial standards ↗"}
+              </Link>
             </div>
             {page.kind === "service" ? (
               <div className="mt-7 flex flex-wrap gap-3">
@@ -214,6 +225,22 @@ export function ContentPageTemplate({ page }: Props) {
             <Link href={`/${page.lang}/${resourceHubSlug(page.lang)}`} className="block rounded-3xl border border-brandLightBlue/25 bg-brandLightBlue/10 p-5 text-sm font-semibold text-brandNavy transition hover:bg-brandLightBlue/20">
               {isSpanish ? "Ver todos los recursos →" : "View all resources →"}
             </Link>
+
+            <div className="card p-5" data-gsap-reveal>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brandTurquoise">
+                {isSpanish ? "Autoridad & trazabilidad" : "Authority & traceability"}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-brandGray">
+                {isSpanish
+                  ? "Este contenido está atribuido a una persona responsable, muestra fecha de actualización y enlaza sus fuentes para que la información pueda verificarse."
+                  : "This content is attributed to a responsible person, displays an update date, and links its sources so the information can be verified."}
+              </p>
+              <div className="mt-4 space-y-2 text-xs font-semibold text-brandNavy">
+                <Link href={authorPath} className="block hover:text-brandTurquoise">{page.author} →</Link>
+                <Link href={editorialPath(page.lang)} className="block hover:text-brandTurquoise">{isSpanish ? "Política editorial" : "Editorial policy"} →</Link>
+                <Link href={methodologyPath(page.lang)} className="block hover:text-brandTurquoise">{isSpanish ? "Metodología de fuentes" : "Source methodology"} →</Link>
+              </div>
+            </div>
           </aside>
         </div>
       </main>

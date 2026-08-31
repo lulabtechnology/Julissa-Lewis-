@@ -4,6 +4,8 @@ import { Navbar } from "@/components/Navbar";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { ContentPageTemplate } from "@/components/ContentPageTemplate";
 import { ResourceHub } from "@/components/ResourceHub";
+import { SiteFooter } from "@/components/SiteFooter";
+import { profilePath } from "@/lib/phase4-authority";
 import {
   getContentPage,
   getContentPages,
@@ -11,6 +13,7 @@ import {
   resourceHubSlug
 } from "@/lib/phase3-content";
 import {
+  LINKEDIN_URL,
   SITE_NAME,
   SITE_URL,
   absoluteUrl,
@@ -53,6 +56,9 @@ export function generateMetadata({ params }: PageProps): Metadata {
           "es-PA": `/es/${RESOURCE_HUB_META.es.slug}`,
           en: `/en/${RESOURCE_HUB_META.en.slug}`,
           "x-default": `/es/${RESOURCE_HUB_META.es.slug}`
+        },
+        types: {
+          "application/rss+xml": `/${lang}/feed.xml`
         }
       },
       openGraph: {
@@ -83,6 +89,9 @@ export function generateMetadata({ params }: PageProps): Metadata {
         "es-PA": lang === "es" ? canonical : alternatePath,
         en: lang === "en" ? canonical : alternatePath,
         "x-default": lang === "es" ? canonical : alternatePath
+      },
+      types: {
+        "application/rss+xml": `/${lang}/feed.xml`
       }
     },
     openGraph: {
@@ -137,7 +146,9 @@ function contentJsonLd(lang: Lang, slug: string) {
           : lang === "es"
             ? "Fundadora y Contadora Principal"
             : "Founder and Principal Accountant",
-      worksFor: { "@id": `${SITE_URL}/#organization` }
+      worksFor: { "@id": `${SITE_URL}/#organization` },
+      url: absoluteUrl(profilePath(lang, page.author === "Jissbeth Lewis" ? "Jissbeth Lewis" : "Julissa Lewis")),
+      sameAs: page.author === "Julissa Lewis" ? [LINKEDIN_URL] : undefined
     },
     {
       "@type": "BreadcrumbList",
@@ -195,7 +206,9 @@ function contentJsonLd(lang: Lang, slug: string) {
       datePublished: page.published,
       dateModified: page.updated,
       author: { "@id": authorId },
+      reviewedBy: { "@id": `${SITE_URL}/#organization` },
       publisher: { "@id": `${SITE_URL}/#organization` },
+      citation: page.sources.map((source) => source.url),
       mainEntityOfPage: url,
       inLanguage: lang === "es" ? "es-PA" : "en"
     });
@@ -270,12 +283,7 @@ export default function KnowledgePage({ params }: PageProps) {
       <Navbar lang={lang} alternateHref={alternateHref} />
       {isHub ? <ResourceHub lang={lang} /> : <ContentPageTemplate page={page!} />}
       <WhatsAppFloat lang={lang} />
-      <footer className="border-t border-gray-100 bg-white">
-        <div className="section-container flex flex-col items-center justify-between gap-3 py-6 text-xs text-brandGray sm:flex-row">
-          <p>© {new Date().getFullYear()} JJL Independent Accounting. {lang === "es" ? "Todos los derechos reservados." : "All rights reserved."}</p>
-          <p>{lang === "es" ? "Diseño web por" : "Web design by"} <a href="https://lulabtech.com/" target="_blank" rel="noopener noreferrer" className="font-semibold text-brandTurquoise">LuLabTech</a></p>
-        </div>
-      </footer>
+      <SiteFooter lang={lang} />
     </div>
   );
 }

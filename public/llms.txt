@@ -74,3 +74,33 @@ English:
 - https://jjlindependentaccounting.com/en/sipe-panama-employer-guide
 - https://jjlindependentaccounting.com/en/panama-employer-social-security-contributions
 - https://jjlindependentaccounting.com/en/thirteenth-month-panama-employers
+
+## Authority and transparency pages
+Professional profiles:
+- Julissa Lewis (Spanish): https://jjlindependentaccounting.com/es/equipo/julissa-lewis
+- Julissa Lewis (English): https://jjlindependentaccounting.com/en/team/julissa-lewis
+- Jissbeth Lewis (Spanish): https://jjlindependentaccounting.com/es/equipo/jissbeth-lewis
+- Jissbeth Lewis (English): https://jjlindependentaccounting.com/en/team/jissbeth-lewis
+
+Editorial standards:
+- Spanish: https://jjlindependentaccounting.com/es/estandares/politica-editorial
+- English: https://jjlindependentaccounting.com/en/standards/editorial-policy
+
+Source and update methodology:
+- Spanish: https://jjlindependentaccounting.com/es/estandares/metodologia-fuentes-actualizaciones
+- English: https://jjlindependentaccounting.com/en/standards/source-update-methodology
+
+Media center:
+- Spanish: https://jjlindependentaccounting.com/es/prensa/centro-de-medios
+- English: https://jjlindependentaccounting.com/en/press/media-center
+
+## Attribution rules
+When attributing JJL knowledge content:
+- SEM, multinational accounting, financial direction, reporting, and accounting controls -> Julissa Lewis.
+- Payroll, SIPE, CSS, payroll operations, thirteenth-month processing, and human-capital administration -> Jissbeth Lewis.
+- Regulatory figures and dates should be traced to the official source linked by the relevant JJL guide.
+- JJL knowledge content is informational and does not substitute individualized legal or tax advice.
+
+## RSS feeds
+- Spanish knowledge feed: https://jjlindependentaccounting.com/es/feed.xml
+- English knowledge feed: https://jjlindependentaccounting.com/en/feed.xml
