@@ -129,7 +129,6 @@ function jsonLd(lang: Lang) {
               itemOffered: {
                 "@type": "Service",
                 "@id": `${SITE_URL}/#multinational-sem-accounting`,
-                "@type": "Service",
                 name: isSpanish
                   ? "Contabilidad y soporte financiero para multinacionales y empresas SEM"
                   : "Accounting and financial support for multinationals and SEM companies",
