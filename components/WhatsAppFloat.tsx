@@ -1,3 +1,5 @@
+import { SocialIcon } from "@/components/SocialIcon";
+
 type Lang = "es" | "en";
 
 interface WhatsAppFloatProps {
@@ -18,8 +20,8 @@ export function WhatsAppFloat({ lang }: WhatsAppFloatProps) {
       aria-label="WhatsApp JJL Independent Accounting"
       className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-soft hover:scale-105 transition-transform"
     >
-      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-base">
-        ☎
+      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20">
+        <SocialIcon name="whatsapp" className="h-5 w-5" />
       </span>
       <span className="hidden sm:inline">WhatsApp</span>
     </a>

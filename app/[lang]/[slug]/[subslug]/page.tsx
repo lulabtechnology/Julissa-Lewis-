@@ -12,6 +12,7 @@ import {
 } from "@/lib/phase4-authority";
 import { getContentPages } from "@/lib/phase3-content";
 import { SITE_NAME, SITE_URL, absoluteUrl, isLang, type Lang } from "@/lib/seo";
+import { organizationSchema } from "@/lib/schema";
 
 type PageProps = {
   params: { lang: string; slug: string; subslug: string };
@@ -35,10 +36,18 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const canonical = `/${entry.lang}/${entry.section}/${entry.slug}`;
   const alternateLang: Lang = entry.lang === "es" ? "en" : "es";
   const alternatePath = `/${alternateLang}/${entry.alternateSection}/${entry.alternateSlug}`;
+  const socialImage =
+    entry.type === "profile"
+      ? entry.name === "Julissa Lewis"
+        ? "/social/og-julissa.png"
+        : "/social/og-jissbeth.png"
+      : "/social/og-default.png";
 
   return {
     title: entry.seoTitle,
     description: entry.description,
+    authors: [{ name: entry.type === "profile" ? entry.name : SITE_NAME, url: canonical }],
+    creator: entry.type === "profile" ? entry.name : SITE_NAME,
     alternates: {
       canonical,
       languages: {
@@ -58,16 +67,18 @@ export function generateMetadata({ params }: PageProps): Metadata {
       description: entry.description,
       locale: entry.lang === "es" ? "es_PA" : "en_US",
       alternateLocale: [entry.lang === "es" ? "en_US" : "es_PA"],
-      images:
-        entry.type === "profile"
-          ? [{ url: entry.image, width: 1024, height: 1280, alt: entry.name }]
-          : [{ url: "/images/service-accounting.jpg", width: 1024, height: 559, alt: entry.type === "press" ? "JJL Independent Accounting media center" : "JJL Independent Accounting content standards" }]
+      images: [{
+        url: socialImage,
+        width: 1200,
+        height: 630,
+        alt: entry.type === "profile" ? `${entry.name} - JJL Independent Accounting` : entry.type === "press" ? "JJL Independent Accounting media center" : "JJL Independent Accounting content standards"
+      }]
     },
     twitter: {
       card: "summary_large_image",
       title: entry.seoTitle,
       description: entry.description,
-      images: [entry.type === "profile" ? entry.image : "/images/service-accounting.jpg"]
+      images: [socialImage]
     }
   };
 }
@@ -75,13 +86,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
 function authorityJsonLd(entry: NonNullable<ReturnType<typeof getAuthorityEntry>>) {
   const url = absoluteUrl(`/${entry.lang}/${entry.section}/${entry.slug}`);
   const graph: Record<string, unknown>[] = [
-    {
-      "@type": ["Organization", "AccountingService"],
-      "@id": `${SITE_URL}/#organization`,
-      name: SITE_NAME,
-      url: SITE_URL,
-      areaServed: { "@type": "Country", name: "Panama" }
-    },
+    organizationSchema(entry.lang),
     {
       "@type": "BreadcrumbList",
       "@id": `${url}#breadcrumb`,

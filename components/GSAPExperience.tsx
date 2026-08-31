@@ -11,6 +11,8 @@ export function GSAPExperience() {
     let cancelled = false;
 
     async function init() {
+      if (!document.querySelector("[data-gsap-reveal], [data-gsap-stagger], [data-gsap-parallax]")) return;
+
       const [{ gsap }, { ScrollTrigger }] = await Promise.all([
         import("gsap"),
         import("gsap/ScrollTrigger")
@@ -85,10 +87,11 @@ export function GSAPExperience() {
       };
     }
 
-    init();
+    const timer = window.setTimeout(init, 60);
 
     return () => {
       cancelled = true;
+      window.clearTimeout(timer);
       cleanup();
     };
   }, [pathname]);

@@ -5,16 +5,15 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { PriorityServices } from "@/components/PriorityServices";
 import { Services } from "@/components/Services";
-import { ContactSection } from "@/components/ContactSection";
 import { IntegrityQuote } from "@/components/IntegrityQuote";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { FeaturedResources } from "@/components/FeaturedResources";
 import { SiteFooter } from "@/components/SiteFooter";
+import { LazyContactSection } from "@/components/LazyContactSection";
 import { profilePath } from "@/lib/phase4-authority";
 import { serviceSlug } from "@/lib/phase3-content";
+import { organizationSchema } from "@/lib/schema";
 import {
-  CONTACT_EMAIL,
-  CONTACT_PHONE,
   LINKEDIN_URL,
   SEO,
   SITE_NAME,
@@ -66,9 +65,9 @@ export function generateMetadata({ params }: PageProps): Metadata {
       alternateLocale: [seo.ogLocaleAlternate],
       images: [
         {
-          url: "/images/service-accounting.jpg",
-          width: 1024,
-          height: 559,
+          url: "/social/og-default.png",
+          width: 1200,
+          height: 630,
           alt:
             lang === "es"
               ? "JJL Independent Accounting - servicios contables en Panamá"
@@ -80,7 +79,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
       card: "summary_large_image",
       title: seo.title,
       description: seo.description,
-      images: ["/images/service-accounting.jpg"]
+      images: ["/social/og-default.png"]
     }
   };
 }
@@ -93,40 +92,7 @@ function jsonLd(lang: Lang) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["Organization", "AccountingService"],
-        "@id": `${SITE_URL}/#organization`,
-        name: SITE_NAME,
-        url: SITE_URL,
-        logo: {
-          "@type": "ImageObject",
-          url: absoluteUrl("/images/logo-julissa-lewis.png")
-        },
-        image: absoluteUrl("/images/julissa-lewis-new.jpg"),
-        email: CONTACT_EMAIL,
-        telephone: CONTACT_PHONE,
-        areaServed: {
-          "@type": "Country",
-          name: "Panama"
-        },
-        founder: [
-          { "@id": `${SITE_URL}/#julissa-lewis` },
-          { "@id": `${SITE_URL}/#jissbeth-lewis` }
-        ],
-        employee: [
-          { "@id": `${SITE_URL}/#julissa-lewis` },
-          { "@id": `${SITE_URL}/#jissbeth-lewis` }
-        ],
-        knowsAbout: [
-          "Accounting in Panama",
-          "Tax compliance in Panama",
-          "Accounting for SEM companies in Panama",
-          "Multinational accounting in Panama",
-          "Payroll outsourcing in Panama",
-          "SIPE",
-          "Caja de Seguro Social",
-          "Labor compliance in Panama",
-          "Foreign-source operations"
-        ],
+        ...organizationSchema(lang),
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: isSpanish ? "Servicios de JJL" : "JJL services",
@@ -274,7 +240,7 @@ export default function LocalizedHomePage({ params }: PageProps) {
         <IntegrityQuote lang={lang} />
         <Services lang={lang} />
         <FeaturedResources lang={lang} />
-        <ContactSection lang={lang} />
+        <LazyContactSection lang={lang} />
         <WhatsAppFloat lang={lang} />
 
         <SiteFooter lang={lang} />

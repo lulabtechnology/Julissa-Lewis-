@@ -40,26 +40,20 @@ export function Navbar({ lang, alternateHref }: NavbarProps) {
         <div className="flex items-center justify-between gap-3">
           <a
             href={`/${lang}`}
-            className="flex min-w-0 items-center gap-3"
+            className="flex min-w-0 items-center"
             aria-label="JJL Independent Accounting"
           >
-            <div className="relative h-11 w-32 shrink-0 sm:h-16 sm:w-64">
+            <div className="relative h-12 w-36 shrink-0 sm:h-16 sm:w-72">
               <Image
-                src="/images/logo-julissa-lewis.png"
+                src="/brand/jjl-logo.svg"
                 alt="JJL Independent Accounting"
                 fill
                 className="object-contain"
-                sizes="(min-width: 640px) 256px, 128px"
+                sizes="(min-width: 640px) 288px, 144px"
                 priority
               />
             </div>
 
-            <div className="hidden sm:flex flex-col">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-brandGray">
-                Accounting • Payroll • SEM
-              </span>
-              <span className="text-sm font-semibold text-brandNavy">Julissa Lewis, CPA</span>
-            </div>
           </a>
 
           <nav

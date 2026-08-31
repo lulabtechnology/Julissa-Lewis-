@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SocialIcon } from "@/components/SocialIcon";
 import Link from "next/link";
 import type { AuthorityProfile } from "@/lib/phase4-authority";
 import { editorialPath, mediaPath } from "@/lib/phase4-authority";
@@ -40,7 +41,8 @@ export function AuthorityProfileTemplate({ profile }: { profile: AuthorityProfil
               </Link>
               {profile.sameAs?.map((url) => (
                 <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="btn-outline border-white/35 bg-white/5 text-white hover:border-brandTurquoise">
-                  LinkedIn ↗
+                  <SocialIcon name="linkedin" className="mr-2 h-4 w-4" />
+                  LinkedIn
                 </a>
               ))}
             </div>

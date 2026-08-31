@@ -1,8 +1,9 @@
 import Link from "next/link";
+import { SocialIcon } from "@/components/SocialIcon";
+import { LazyPayrollCssCalculator } from "@/components/LazyPayrollCssCalculator";
 import type { ContentPage } from "@/lib/phase3-content";
 import { getRelatedPages, resourceHubSlug, serviceSlug } from "@/lib/phase3-content";
-import { PayrollCssCalculator } from "@/components/PayrollCssCalculator";
-import { editorialPath, methodologyPath, profilePath } from "@/lib/phase4-authority";
+import { editorialPath, methodologyPath, profilePath, sourcesPath } from "@/lib/phase4-authority";
 
 type Props = {
   page: ContentPage;
@@ -79,7 +80,7 @@ export function ContentPageTemplate({ page }: Props) {
                   rel="noopener noreferrer"
                   className="btn-outline border-white/40 bg-white/5 text-white hover:border-brandTurquoise"
                 >
-                  WhatsApp
+                  <SocialIcon name="whatsapp" className="mr-2 h-4 w-4" /> WhatsApp
                 </a>
               </div>
             ) : null}
@@ -132,7 +133,7 @@ export function ContentPageTemplate({ page }: Props) {
               </section>
             ))}
 
-            {page.interactive === "css-calculator" ? <PayrollCssCalculator lang={page.lang} /> : null}
+            {page.interactive === "css-calculator" ? <LazyPayrollCssCalculator lang={page.lang} /> : null}
 
             <section className="space-y-5" data-gsap-reveal>
               <div>
@@ -239,6 +240,7 @@ export function ContentPageTemplate({ page }: Props) {
                 <Link href={authorPath} className="block hover:text-brandTurquoise">{page.author} →</Link>
                 <Link href={editorialPath(page.lang)} className="block hover:text-brandTurquoise">{isSpanish ? "Política editorial" : "Editorial policy"} →</Link>
                 <Link href={methodologyPath(page.lang)} className="block hover:text-brandTurquoise">{isSpanish ? "Metodología de fuentes" : "Source methodology"} →</Link>
+                <Link href={sourcesPath(page.lang)} className="block hover:text-brandTurquoise">{isSpanish ? "Directorio de fuentes" : "Source directory"} →</Link>
               </div>
             </div>
           </aside>

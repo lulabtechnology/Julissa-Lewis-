@@ -55,7 +55,7 @@ const entries: AuthorityEntry[] = [
     name: "Julissa Lewis",
     role: "Fundadora & Contadora Principal",
     credentialLine: "CPA · Consultora Financiera",
-    seoTitle: "Julissa Lewis, CPA | Contabilidad y Dirección Financiera en Panamá | JJL",
+    seoTitle: "Julissa Lewis, CPA | Dirección Financiera en Panamá | JJL",
     description:
       "Perfil profesional de Julissa Lewis, fundadora de JJL Independent Accounting, con enfoque en contabilidad, dirección financiera, multinacionales y cumplimiento en Panamá.",
     eyebrow: "Perfil profesional",
@@ -91,7 +91,7 @@ const entries: AuthorityEntry[] = [
     name: "Julissa Lewis",
     role: "Founder & Principal Accountant",
     credentialLine: "CPA · Financial Consultant",
-    seoTitle: "Julissa Lewis, CPA | Accounting & Financial Direction in Panama | JJL",
+    seoTitle: "Julissa Lewis, CPA | Accounting in Panama | JJL",
     description:
       "Professional profile of Julissa Lewis, founder of JJL Independent Accounting, focused on accounting, financial direction, multinationals, and Panama compliance.",
     eyebrow: "Professional profile",
@@ -127,7 +127,7 @@ const entries: AuthorityEntry[] = [
     name: "Jissbeth Lewis",
     role: "Co-Fundadora & Especialista en Administración y Planilla",
     credentialLine: "Gestión de Nómina · SIPE · Cumplimiento Laboral",
-    seoTitle: "Jissbeth Lewis | Payroll, SIPE y Cumplimiento Laboral en Panamá | JJL",
+    seoTitle: "Jissbeth Lewis | Payroll y SIPE en Panamá | JJL",
     description:
       "Perfil profesional de Jissbeth Lewis, especialista de JJL en payroll, SIPE, CSS, administración de capital humano y cumplimiento laboral operativo en Panamá.",
     eyebrow: "Perfil profesional",
@@ -194,7 +194,7 @@ const entries: AuthorityEntry[] = [
     slug: "politica-editorial",
     alternateSection: "standards",
     alternateSlug: "editorial-policy",
-    seoTitle: "Política Editorial y Estándares de Contenido | JJL Independent Accounting",
+    seoTitle: "Política Editorial | JJL Independent Accounting Panamá",
     description:
       "Cómo JJL estructura, atribuye, actualiza y limita su contenido sobre contabilidad, SEM, payroll, SIPE y cumplimiento en Panamá.",
     eyebrow: "Confianza & transparencia",
@@ -342,7 +342,7 @@ const entries: AuthorityEntry[] = [
     slug: "source-update-methodology",
     alternateSection: "estandares",
     alternateSlug: "metodologia-fuentes-actualizaciones",
-    seoTitle: "Source & Update Methodology | JJL",
+    seoTitle: "Source & Update Methodology | JJL Accounting Panama",
     description:
       "JJL methodology for selecting sources, dating content, updating regulatory changes, and presenting informational calculators and examples.",
     eyebrow: "Methodology",
@@ -485,6 +485,47 @@ const entries: AuthorityEntry[] = [
   }
 ];
 
+entries.push(
+  {
+    type: "standard", lang: "es", section: "fuentes", slug: "referencias-oficiales",
+    alternateSection: "sources", alternateSlug: "official-references",
+    seoTitle: "Fuentes Oficiales y Referencias | JJL Independent Accounting",
+    description: "Fuentes oficiales utilizadas por JJL para verificar contenido sobre SEM, DGI, SIPE, CSS, planilla y cumplimiento empresarial en Panamá.",
+    eyebrow: "Fuentes verificables", title: "Fuentes oficiales y referencias de JJL",
+    summary: "Directorio de las fuentes públicas que JJL utiliza para respaldar, revisar y actualizar sus guías de contabilidad, SEM y payroll en Panamá.",
+    updated: "2026-08-31",
+    sections: [
+      { heading: "Instituciones y fuentes primarias", paragraphs: ["JJL prioriza fuentes oficiales antes de publicaciones secundarias."], bullets: [
+        "MICI y portal SEM: régimen y actividades de Sedes de Empresas Multinacionales.",
+        "DGI / MEF: formularios, obligaciones e información tributaria pública.",
+        "Caja de Seguro Social (CSS): SIPE, planilla y comunicados de cuotas.",
+        "Gaceta Oficial y Órgano Judicial: leyes y publicaciones normativas primarias."
+      ]},
+      { heading: "Cómo se usan estas referencias", paragraphs: ["Cada guía enlaza sus fuentes específicas. Este directorio sirve como capa adicional de transparencia y no sustituye la validación profesional de cada caso."] },
+      { heading: "Enlaces oficiales principales", paragraphs: ["MICI: https://mici.gob.pa/ · SEM: https://sem.gob.pa/ · DGI: https://dgi.mef.gob.pa/ · CSS: https://www.css.gob.pa/ · Gaceta Oficial: https://www.gacetaoficial.gob.pa/"] }
+    ]
+  },
+  {
+    type: "standard", lang: "en", section: "sources", slug: "official-references",
+    alternateSection: "fuentes", alternateSlug: "referencias-oficiales",
+    seoTitle: "Official Sources & References | JJL Independent Accounting",
+    description: "Official sources used by JJL to verify content on SEM, DGI, SIPE, CSS, payroll, and business compliance in Panama.",
+    eyebrow: "Verifiable sources", title: "JJL official sources and references",
+    summary: "A directory of public sources JJL uses to support, review, and update its accounting, SEM, and payroll guides in Panama.",
+    updated: "2026-08-31",
+    sections: [
+      { heading: "Institutions and primary sources", paragraphs: ["JJL prioritizes official sources before secondary publications."], bullets: [
+        "MICI and the SEM portal: multinational headquarters regime and authorized activities.",
+        "DGI / MEF: forms, obligations, and public tax information.",
+        "Caja de Seguro Social (CSS): SIPE, payroll, and employer-contribution releases.",
+        "Official Gazette and Judicial Branch: primary laws and regulatory publications."
+      ]},
+      { heading: "How these references are used", paragraphs: ["Each guide links its specific sources. This directory adds a transparency layer and does not replace professional validation for a specific case."] },
+      { heading: "Main official links", paragraphs: ["MICI: https://mici.gob.pa/ · SEM: https://sem.gob.pa/ · DGI: https://dgi.mef.gob.pa/ · CSS: https://www.css.gob.pa/ · Official Gazette: https://www.gacetaoficial.gob.pa/"] }
+    ]
+  }
+);
+
 export function getAuthorityEntries(lang?: Lang) {
   return lang ? entries.filter((entry) => entry.lang === lang) : entries;
 }
@@ -517,4 +558,8 @@ export function methodologyPath(lang: Lang) {
 
 export function mediaPath(lang: Lang) {
   return lang === "es" ? "/es/prensa/centro-de-medios" : "/en/press/media-center";
+}
+
+export function sourcesPath(lang: Lang) {
+  return lang === "es" ? "/es/fuentes/referencias-oficiales" : "/en/sources/official-references";
 }

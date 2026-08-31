@@ -1,0 +1,44 @@
+JJL FASE 5 - FINAL QA
+2026-08-31
+
+TS/TSX syntax files: 38
+Syntax errors: 0
+Dynamic route conflicts: 0
+Old app/[lang]/[section] exists: false
+next/image missing alt: 0
+Source map files in project: 0
+productionBrowserSourceMaps=false: true
+lib/phase3-content.ts SEO titles unique: 20/20
+lib/phase3-content.ts title length range: 45-65
+lib/phase3-content.ts descriptions unique: 20/20
+lib/phase3-content.ts description length range: 108-167
+lib/phase4-authority.ts SEO titles unique: 12/12
+lib/phase4-authority.ts title length range: 46-65
+lib/phase4-authority.ts descriptions unique: 12/12
+lib/phase4-authority.ts description length range: 114-170
+Asset public/brand/jjl-logo.svg: OK
+Asset public/brand/jjl-mark.svg: OK
+Asset public/brand/jjl-logo.png: OK
+Asset app/favicon.ico: OK
+Asset app/icon.svg: OK
+Asset app/apple-icon.png: OK
+Asset public/social/og-default.png: OK
+Asset public/social/og-sem.png: OK
+Asset public/social/og-payroll.png: OK
+Asset public/social/og-julissa.png: OK
+Asset public/social/og-jissbeth.png: OK
+Asset public/llms.txt: OK
+Asset public/llm.txt: OK
+llm.txt equals llms.txt: true
+Lulab footer attribution: OK
+Type-oriented internal findings after expected stub limitation: 0
+Indexable/data routes: 34
+Content pages: 18
+Authority/source pages: 12
+Broken alternate/related references: 0
+Sitemap HTTP status: 200
+Sitemap URL entries: 34
+Sitemap ES alternates: 34
+Sitemap EN alternates: 34
+Sitemap x-default: 34
+Sitemap namespaces valid: true

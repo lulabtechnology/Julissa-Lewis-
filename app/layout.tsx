@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
-import { GSAPExperience } from "@/components/GSAPExperience";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -21,9 +20,13 @@ export const metadata: Metadata = {
       "max-video-preview": -1
     }
   },
-  icons: {
-    icon: "/images/logo-julissa-lewis.png",
-    apple: "/images/logo-julissa-lewis.png"
+  openGraph: {
+    siteName: SITE_NAME,
+    images: [{ url: "/social/og-default.png", width: 1200, height: 630, alt: "JJL Independent Accounting - Panama" }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/social/og-default.png"]
   },
   manifest: "/manifest.webmanifest"
 };
@@ -50,10 +53,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
-        <GSAPExperience />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

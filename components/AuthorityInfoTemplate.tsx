@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { AuthorityInfoPage } from "@/lib/phase4-authority";
-import { editorialPath, mediaPath, methodologyPath, profilePath } from "@/lib/phase4-authority";
+import { editorialPath, mediaPath, methodologyPath, profilePath, sourcesPath } from "@/lib/phase4-authority";
 import { resourceHubSlug } from "@/lib/phase3-content";
 
 export function AuthorityInfoTemplate({ page }: { page: AuthorityInfoPage }) {
@@ -20,6 +20,25 @@ export function AuthorityInfoTemplate({ page }: { page: AuthorityInfoPage }) {
 
       <div className="section-container grid gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:py-16">
         <article className="space-y-10">
+          {page.section === "fuentes" || page.section === "sources" ? (
+            <section className="card p-6 sm:p-8" data-gsap-reveal>
+              <h2 className="text-2xl font-semibold text-brandNavy">{isSpanish ? "Directorio oficial" : "Official directory"}</h2>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {[
+                  ["MICI", "https://mici.gob.pa/"],
+                  ["SEM Panamá", "https://sem.gob.pa/"],
+                  ["DGI / MEF", "https://dgi.mef.gob.pa/"],
+                  ["Caja de Seguro Social", "https://www.css.gob.pa/"],
+                  [isSpanish ? "Gaceta Oficial" : "Official Gazette", "https://www.gacetaoficial.gob.pa/"],
+                  [isSpanish ? "Órgano Judicial" : "Judicial Branch", "https://www.organojudicial.gob.pa/"]
+                ].map(([label, url]) => (
+                  <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-gray-100 bg-[#F7FAFC] p-4 text-sm font-semibold text-brandNavy transition hover:border-brandLightBlue/50 hover:text-brandTurquoise">
+                    {label} ↗
+                  </a>
+                ))}
+              </div>
+            </section>
+          ) : null}
           {page.sections.map((section) => (
             <section key={section.heading} className="space-y-4" data-gsap-reveal>
               <h2 className="text-2xl font-semibold text-brandNavy sm:text-3xl">{section.heading}</h2>
@@ -55,6 +74,7 @@ export function AuthorityInfoTemplate({ page }: { page: AuthorityInfoPage }) {
               {page.type !== "press" ? <Link className="block hover:text-brandTurquoise" href={mediaPath(page.lang)}>{isSpanish ? "Centro de medios" : "Media center"} →</Link> : null}
               {page.slug !== (isSpanish ? "politica-editorial" : "editorial-policy") ? <Link className="block hover:text-brandTurquoise" href={editorialPath(page.lang)}>{isSpanish ? "Política editorial" : "Editorial policy"} →</Link> : null}
               {page.slug !== (isSpanish ? "metodologia-fuentes-actualizaciones" : "source-update-methodology") ? <Link className="block hover:text-brandTurquoise" href={methodologyPath(page.lang)}>{isSpanish ? "Metodología" : "Methodology"} →</Link> : null}
+              <Link className="block hover:text-brandTurquoise" href={sourcesPath(page.lang)}>{isSpanish ? "Fuentes oficiales" : "Official sources"} →</Link>
             </div>
           </div>
         </aside>

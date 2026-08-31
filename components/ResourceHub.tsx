@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getContentPages, RESOURCE_HUB_META, serviceSlug } from "@/lib/phase3-content";
 import type { Lang } from "@/lib/seo";
-import { editorialPath, methodologyPath, profilePath } from "@/lib/phase4-authority";
+import { editorialPath, methodologyPath, profilePath, sourcesPath } from "@/lib/phase4-authority";
 
 export function ResourceHub({ lang }: { lang: Lang }) {
   const meta = RESOURCE_HUB_META[lang];
@@ -60,6 +60,7 @@ export function ResourceHub({ lang }: { lang: Lang }) {
               <Link href={profilePath(lang, "Jissbeth Lewis")} className="rounded-2xl border border-gray-100 bg-[#F7FAFC] p-4 text-sm font-semibold text-brandNavy hover:border-brandLightBlue/50">Jissbeth Lewis →</Link>
               <Link href={editorialPath(lang)} className="rounded-2xl border border-gray-100 bg-[#F7FAFC] p-4 text-sm font-semibold text-brandNavy hover:border-brandLightBlue/50">{isSpanish ? "Política editorial →" : "Editorial policy →"}</Link>
               <Link href={methodologyPath(lang)} className="rounded-2xl border border-gray-100 bg-[#F7FAFC] p-4 text-sm font-semibold text-brandNavy hover:border-brandLightBlue/50">{isSpanish ? "Metodología de fuentes →" : "Source methodology →"}</Link>
+              <Link href={sourcesPath(lang)} className="rounded-2xl border border-gray-100 bg-[#F7FAFC] p-4 text-sm font-semibold text-brandNavy hover:border-brandLightBlue/50">{isSpanish ? "Fuentes oficiales →" : "Official sources →"}</Link>
             </div>
           </div>
         </section>

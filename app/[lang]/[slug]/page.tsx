@@ -6,6 +6,7 @@ import { ContentPageTemplate } from "@/components/ContentPageTemplate";
 import { ResourceHub } from "@/components/ResourceHub";
 import { SiteFooter } from "@/components/SiteFooter";
 import { profilePath } from "@/lib/phase4-authority";
+import { organizationSchema } from "@/lib/schema";
 import {
   getContentPage,
   getContentPages,
@@ -68,7 +69,14 @@ export function generateMetadata({ params }: PageProps): Metadata {
         title: hub.seoTitle,
         description: hub.description,
         locale: lang === "es" ? "es_PA" : "en_US",
-        alternateLocale: [lang === "es" ? "en_US" : "es_PA"]
+        alternateLocale: [lang === "es" ? "en_US" : "es_PA"],
+        images: [{ url: "/social/og-default.png", width: 1200, height: 630, alt: hub.title }]
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: hub.seoTitle,
+        description: hub.description,
+        images: ["/social/og-default.png"]
       }
     };
   }
@@ -79,10 +87,13 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const canonical = `/${lang}/${page.slug}`;
   const alternateLang: Lang = lang === "es" ? "en" : "es";
   const alternatePath = `/${alternateLang}/${page.alternateSlug}`;
+  const authorUrl = page.author === "JJL Independent Accounting" ? SITE_URL : absoluteUrl(profilePath(lang, page.author));
 
   return {
     title: page.seoTitle,
     description: page.description,
+    authors: [{ name: page.author, url: authorUrl }],
+    creator: page.author,
     alternates: {
       canonical,
       languages: {
@@ -102,11 +113,14 @@ export function generateMetadata({ params }: PageProps): Metadata {
       description: page.description,
       locale: lang === "es" ? "es_PA" : "en_US",
       alternateLocale: [lang === "es" ? "en_US" : "es_PA"],
+      ...(page.kind === "article"
+        ? { publishedTime: page.published, modifiedTime: page.updated, authors: [authorUrl] }
+        : {}),
       images: [
         {
-          url: page.cluster === "payroll" ? "/images/service-payroll.jpg" : "/images/service-accounting.jpg",
-          width: 1024,
-          height: 559,
+          url: page.cluster === "payroll" ? "/social/og-payroll.png" : "/social/og-sem.png",
+          width: 1200,
+          height: 630,
           alt: page.title
         }
       ]
@@ -115,7 +129,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
       card: "summary_large_image",
       title: page.seoTitle,
       description: page.description,
-      images: [page.cluster === "payroll" ? "/images/service-payroll.jpg" : "/images/service-accounting.jpg"]
+      images: [page.cluster === "payroll" ? "/social/og-payroll.png" : "/social/og-sem.png"]
     }
   };
 }
@@ -127,13 +141,7 @@ function contentJsonLd(lang: Lang, slug: string) {
   const url = absoluteUrl(`/${lang}/${page.slug}`);
   const authorId = page.author === "Jissbeth Lewis" ? `${SITE_URL}/#jissbeth-lewis` : `${SITE_URL}/#julissa-lewis`;
   const graph: Record<string, unknown>[] = [
-    {
-      "@type": ["Organization", "AccountingService"],
-      "@id": `${SITE_URL}/#organization`,
-      name: SITE_NAME,
-      url: SITE_URL,
-      areaServed: { "@type": "Country", name: "Panama" }
-    },
+    organizationSchema(lang),
     {
       "@type": "Person",
       "@id": authorId,

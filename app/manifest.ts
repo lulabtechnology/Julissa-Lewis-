@@ -11,11 +11,8 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#0A2540",
     lang: "es-PA",
     icons: [
-      {
-        src: "/images/logo-julissa-lewis.png",
-        sizes: "1024x800",
-        type: "image/png"
-      }
+      { src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
+      { src: "/apple-icon.png", sizes: "180x180", type: "image/png", purpose: "any" }
     ]
   };
 }

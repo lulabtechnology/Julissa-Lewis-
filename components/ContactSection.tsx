@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import { SocialIcon } from "@/components/SocialIcon";
 
 type Lang = "es" | "en";
 
@@ -307,7 +308,8 @@ export function ContactSection({ lang }: ContactSectionProps) {
             </h3>
             <p className="text-sm text-brandGray leading-relaxed">{t.sideText}</p>
             <div className="text-sm text-brandGray space-y-2">
-              <p>
+              <p className="flex flex-wrap items-center gap-2">
+                <SocialIcon name="whatsapp" className="h-4 w-4 text-[#25D366]" />
                 <span className="font-semibold text-brandNavy">WhatsApp:</span>{" "}
                 <a
                   href="https://wa.me/50767641014"
@@ -318,7 +320,8 @@ export function ContactSection({ lang }: ContactSectionProps) {
                   +507 6764-1014
                 </a>
               </p>
-              <p>
+              <p className="flex flex-wrap items-center gap-2">
+                <SocialIcon name="email" className="h-4 w-4 text-brandTurquoise" />
                 <span className="font-semibold text-brandNavy">
                   {lang === "es" ? "Correo:" : "Email:"}
                 </span>{" "}

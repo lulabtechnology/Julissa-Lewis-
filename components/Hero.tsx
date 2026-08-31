@@ -1,5 +1,6 @@
 import { serviceSlug } from "@/lib/phase3-content";
 import Image from "next/image";
+import { SocialIcon } from "@/components/SocialIcon";
 
 type Lang = "es" | "en";
 
@@ -120,7 +121,7 @@ export function Hero({ lang }: HeroProps) {
 
             <dl className="space-y-3 text-xs">
               <div className="flex justify-between gap-4">
-                <dt className="text-brandGray">WhatsApp</dt>
+                <dt className="flex items-center gap-2 text-brandGray"><SocialIcon name="whatsapp" className="h-4 w-4 text-[#25D366]" />WhatsApp</dt>
                 <dd className="font-medium">
                   <a href="https://wa.me/50767641014" target="_blank" rel="noopener noreferrer">
                     +507 6764-1014
@@ -128,7 +129,7 @@ export function Hero({ lang }: HeroProps) {
                 </dd>
               </div>
               <div className="flex justify-between gap-4">
-                <dt className="text-brandGray">{lang === "es" ? "Correo" : "Email"}</dt>
+                <dt className="flex items-center gap-2 text-brandGray"><SocialIcon name="email" className="h-4 w-4 text-brandTurquoise" />{lang === "es" ? "Correo" : "Email"}</dt>
                 <dd className="font-medium break-all">
                   <a href="mailto:jjlaccounting@julissalewis.com">
                     jjlaccounting@julissalewis.com
